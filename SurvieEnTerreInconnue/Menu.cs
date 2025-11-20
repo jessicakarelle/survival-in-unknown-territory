@@ -146,13 +146,13 @@ namespace SurvieEnTerreInconnue
             Display.AnimateText("\t\t\t\tMise en contexte de l'histoire ...\t");
             Display.AnimateText("\n\tVous êtes le seul survivant à un crash d'avion");
             Console.WriteLine();
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Display.AnimateText("\tVous êtes sur une île abandonnée, aucun signe de vie aux alentours");
             Console.WriteLine();
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Display.AnimateText("\tL'hiver approche ...");
             Console.WriteLine();
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Display.AnimateText("\tConstruisez-vous un abri au plus vite si vous souhaitez survivre ...");
             Console.WriteLine();
         }

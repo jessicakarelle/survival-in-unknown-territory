@@ -24,7 +24,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██║██╔██╗ ██║██║     ██║   ██║██╔██╗ ██║██╔██╗ ██║██║   ██║█████╗                                               " +
                                 "\r\n██║██║╚██╗██║██║     ██║   ██║██║╚██╗██║██║╚██╗██║██║   ██║██╔══╝                                               " +
                                 "\r\n██║██║ ╚████║╚██████╗╚██████╔╝██║ ╚████║██║ ╚████║╚██████╔╝███████╗                                             " +
-                                "\r\n╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                             ", ConsoleColor.Blue, 1);
+                                "\r\n╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                             ", ConsoleColor.White, 1);
             Console.WriteLine();
             Console.ResetColor();
             Console.WriteLine("\n\nAppuyez sur touche pour commençer le jeu....");
@@ -83,7 +83,8 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██╔══██╗██╔══██╗██╔════╝██╔════╝" +
                                 "\r\n██████╔╝███████║███████╗█████╗" +
                                 "  \r\n██╔══██╗██╔══██║╚════██║██╔══╝ " +
-                                " \r\n██████╔╝██║  ██║███████║███████╗\r\n╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝");
+                                " \r\n██████╔╝██║  ██║███████║███████╗" +
+                                "\r\n╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝",ConsoleColor.White, 1);
             Console.ResetColor();
         }
         //Afficher la position dans le désert
@@ -95,7 +96,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██║  ██║█████╗  ███████╗█████╗  ██████╔╝   ██║   " +
                                 "\r\n██║  ██║██╔══╝  ╚════██║██╔══╝  ██╔══██╗   ██║   " +
                                 "\r\n██████╔╝███████╗███████║███████╗██║  ██║   ██║   " +
-                                "\r\n╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝   ");
+                                "\r\n╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝   ", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         //Afficher la position dans la rivière
@@ -107,7 +108,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██████╔╝██║██║   ██║██║█████╗  ██████╔╝█████╗ " +
                                 " \r\n██╔══██╗██║╚██╗ ██╔╝██║██╔══╝  ██╔══██╗██╔══╝  " +
                                 "\r\n██║  ██║██║ ╚████╔╝ ██║███████╗██║  ██║███████╗" +
-                                "\r\n╚═╝  ╚═╝╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝");
+                                "\r\n╚═╝  ╚═╝╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         public static void DisplayPrairiePosition()
@@ -117,7 +118,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██████╔╝██████╔╝███████║██║██████╔╝██║█████╗  " +
                                 "\r\n██╔═══╝ ██╔══██╗██╔══██║██║██╔══██╗██║██╔══╝  " +
                                 "\r\n██║     ██║  ██║██║  ██║██║██║  ██║██║███████╗" +
-                                "\r\n╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝╚══════╝");
+                                "\r\n╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝╚══════╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         //Afficher la position dans la forêt
@@ -129,7 +130,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n█████╗  ██║   ██║██████╔╝█████╗     ██║  " +
                                 " \r\n██╔══╝  ██║   ██║██╔══██╗██╔══╝     ██║   " +
                                 "\r\n██║     ╚██████╔╝██║  ██║███████╗   ██║   " +
-                                "\r\n╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ");
+                                "\r\n╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         //Afficher la postion dans le marais
@@ -140,7 +141,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██╔████╔██║███████║██████╔╝███████║██║███████╗" +
                                 "\r\n██║╚██╔╝██║██╔══██║██╔══██╗██╔══██║██║╚════██║" +
                                 "\r\n██║ ╚═╝ ██║██║  ██║██║  ██║██║  ██║██║███████║" +
-                                "\r\n╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝");
+                                "\r\n╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         //Afficher la postion dans les montagnes
@@ -152,7 +153,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██╔████╔██║██║   ██║██╔██╗ ██║   ██║   ███████║██║  ███╗██╔██╗ ██║█████╗  " +
                                 "\r\n██║╚██╔╝██║██║   ██║██║╚██╗██║   ██║   ██╔══██║██║   ██║██║╚██╗██║██╔══╝  " +
                                 "\r\n██║ ╚═╝ ██║╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╔╝██║ ╚████║███████╗" +
-                                "\r\n╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝");
+                                "\r\n╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         //Afficher l'inventaire
@@ -163,7 +164,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██║██╔██╗ ██║██║   ██║█████╗  ██╔██╗ ██║   ██║   ███████║██║██████╔╝█████╗  " +
                                 "\r\n██║██║╚██╗██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║   ██║   ██╔══██║██║██╔══██╗██╔══╝  " +
                                 "\r\n██║██║ ╚████║ ╚████╔╝ ███████╗██║ ╚████║   ██║   ██║  ██║██║██║  ██║███████╗" +
-                                "\r\n╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝");
+                                "\r\n╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         public static void DisplayInventoryItem1()
@@ -173,7 +174,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██╔████╔██║███████║   ██║   █████╗  ██████╔╝██║█████╗  ██║   ██║ ╚███╔╝" +
                                 " \r\n██║╚██╔╝██║██╔══██║   ██║   ██╔══╝  ██╔══██╗██║██╔══╝  ██║   ██║ ██╔██╗ " +
                                 "\r\n██║ ╚═╝ ██║██║  ██║   ██║   ███████╗██║  ██║██║███████╗╚██████╔╝██╔╝ ██╗" +
-                                "\r\n╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝");
+                                "\r\n╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         public static void DisplayInventoryItem2()
@@ -183,7 +184,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██████╔╝█████╗  ███████╗███████╗██║   ██║██║   ██║██████╔╝██║     █████╗  ███████╗" +
                                 "\r\n██╔══██╗██╔══╝  ╚════██║╚════██║██║   ██║██║   ██║██╔══██╗██║     ██╔══╝  ╚════██║" +
                                 "\r\n██║  ██║███████╗███████║███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗███████║" +
-                                "\r\n╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝");
+                                "\r\n╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         //Afficher l'inventaire
@@ -194,7 +195,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n█████╗  ███████║██████╔╝██████╔╝██║██║     ███████║   ██║   ██║██║   ██║██╔██╗ ██║" +
                                 "\r\n██╔══╝  ██╔══██║██╔══██╗██╔══██╗██║██║     ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║" +
                                 "\r\n██║     ██║  ██║██████╔╝██║  ██║██║╚██████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║" +
-                                "\r\n╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝");
+                                "\r\n╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝", ConsoleColor.White, 1);
             Console.ResetColor();
         }
         public static void AnimateText(string texte, ConsoleColor couleur = ConsoleColor.White, int timeLimit = 20)
@@ -202,22 +203,12 @@ namespace SurvieEnTerreInconnue
             ConsoleColor color = Console.ForegroundColor;
             Console.ForegroundColor = couleur;
 
-            /*foreach (char c in texte)
+            foreach (char c in texte)
             {
                 Console.Write(c);
                 Thread.Sleep(timeLimit);
-            }*/
-
-            for (int i = 0; i < texte.Length; i++)
-            {
-                Console.Write(texte[i]);
-                if(i % 4 == 0)
-                {
-                    Thread.Sleep(timeLimit);
-                }
+                Console.ForegroundColor = color;
             }
-
-            Console.ForegroundColor = color;
         }
         public static void AnimateTextTitle(string texte, ConsoleColor couleur = ConsoleColor.White, int timeLimit = 20)
         {

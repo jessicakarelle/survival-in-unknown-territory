@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,44 @@ namespace SurvieEnTerreInconnue
 {
     internal class Map
     {
+        public static int playerPostionX = 0;
+        public static int playerPostionY = 0;
+
+        public static int[,] mapGrid = new int[20, 20];
+
+        public static Random PositionGenerator = new Random();
+        public static List<String> SavePosition = new List<String>();
+
+        public static void DisplayGridMap()
+        {
+            // Boucle sur les colomnes
+            for(int i= 0; i < mapGrid.GetLength(0); i++)
+            {
+                //Boucles pour les lignes
+                for(int j = 0; j < mapGrid.GetLength(1); j++)
+                {
+                    if(playerPostionX == j && playerPostionY == i)
+                    {
+                        Console.Write("| ");
+                    }
+                    else
+                    {
+                        Console.Write("| ");
+                    }
+                }
+                Console.ForegroundColor = ConsoleColor.White;
+                for (int j = 0; j < 20; j++)
+                {
+                    Console.Write("--");
+                }
+                Console.ResetColor();
+            }
+        }
         public static ConsoleKey DisplayBase()
         {
             Console.Clear();
             Display.DisplayBasePosition();
+            Thread.Sleep(1000);
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
             Display.AnimateText("Vous êtes actuellement sur le terrain de base");
@@ -87,7 +122,6 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine("[O]uest : Vous vous déplacez vers la gauche");
             Console.WriteLine("[S]ud : Vous vous déplacez vers le bas");
             Console.WriteLine("[E]st : Vous vous déplacez vers la droite");
-            Console.WriteLine("[B]ase : Retour à la base");
             Console.WriteLine("[M]enu : Retour au menu principal");
             Console.WriteLine("[Q]uitter : Quitter le jeu");
             Console.WriteLine();
@@ -110,37 +144,42 @@ namespace SurvieEnTerreInconnue
                 {
                     case ConsoleKey.N:
                     case ConsoleKey.UpArrow:
+                        playerPostionY++;
                         Console.Clear();
+                        Display.AnimateText("Vous vous êtes déplacer vers le Nord");
+                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
                         Console.WriteLine("\nAppuyez sur une touche pour continuer...");
                         Console.ReadKey();
                         break;
 
                     case ConsoleKey.O:
                     case ConsoleKey.LeftArrow:
+                        playerPostionX--;
                         Console.Clear();
+                        Display.AnimateText("Vous vous êtes déplacer vers l' Ouest");
+                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
                         Console.WriteLine("\nAppuyez sur une touche pour continuer...");
                         Console.ReadKey();
                         break;
 
                     case ConsoleKey.S:
                     case ConsoleKey.DownArrow:
+                        playerPostionY--;
                         Console.Clear();
+                        Display.AnimateText("Vous vous êtes déplacer vers le Sud");
+                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
                         Console.WriteLine("\nAppuyez sur une touche pour continuer...");
                         Console.ReadKey();
                         break;
 
                     case ConsoleKey.E:
                     case ConsoleKey.RightArrow:
+                        playerPostionX++;
                         Console.Clear();
+                        Display.AnimateText("Vous vous êtes déplacer vers le Sud");
+                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
                         Console.WriteLine("\nAppuyez sur une touche pour continuer...");
                         Console.ReadKey();
-                        break;
-
-                    case ConsoleKey.B:
-                        exploring = false;
-                        Console.Clear();
-                        Display.AnimateText("Vous retournez à votre base...");
-                        Thread.Sleep(1500);
                         break;
 
                     case ConsoleKey.M:
@@ -170,6 +209,7 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplayForestPosition();
+            Thread.Sleep(1000);
             Console.WriteLine();
             Display.AnimateText("Vous êtes actuellement dans la forêt");
             Console.WriteLine();
@@ -229,6 +269,7 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplayPrairiePosition();
+            Thread.Sleep(1000);
             Console.WriteLine();
             Display.AnimateText("Vous êtes actuellement dans la prairie");
             Console.WriteLine();
@@ -289,6 +330,7 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplayDesertPosition();
+            Thread.Sleep(1000);
             Console.WriteLine();
             Display.AnimateText("Vous êtes actuellement dans le désert");
             Console.WriteLine();
@@ -349,6 +391,7 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplayRiverPosition();
+            Thread.Sleep(1000);
             Console.WriteLine();
             Display.AnimateText("Vous êtes actuellement près de la rivière");
             Console.WriteLine();
@@ -409,6 +452,7 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplaySwampPosition();
+            Thread.Sleep(1000);
             Console.WriteLine();
             Display.AnimateText("Vous êtes actuellement dans le marais");
             Console.WriteLine();
@@ -469,6 +513,7 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplayMountainPosition();
+            Thread.Sleep(1000);
             Console.WriteLine();
             Display.AnimateText("Vous êtes actuellement dans la montagne");
             Console.WriteLine();
