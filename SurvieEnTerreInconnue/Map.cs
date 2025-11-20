@@ -208,6 +208,7 @@ namespace SurvieEnTerreInconnue
                         return true;
 
                     case ConsoleKey.Q:
+                        Menu.ProcessDisplayLeaveMessageInput();
                         return false;
 
                     default:
@@ -266,6 +267,7 @@ namespace SurvieEnTerreInconnue
                         return true;
 
                     case ConsoleKey.Q:
+                        Menu.ProcessDisplayLeaveMessageInput();
                         return false;
 
                     default:
@@ -325,6 +327,7 @@ namespace SurvieEnTerreInconnue
                         return true;
 
                     case ConsoleKey.Q:
+                        Menu.ProcessDisplayLeaveMessageInput();
                         return false;
 
                     default:
@@ -384,6 +387,7 @@ namespace SurvieEnTerreInconnue
                         return true;
 
                     case ConsoleKey.Q:
+                        Menu.ProcessDisplayLeaveMessageInput();
                         return false;
 
                     default:
@@ -443,6 +447,7 @@ namespace SurvieEnTerreInconnue
                         return true;
 
                     case ConsoleKey.Q:
+                        Menu.ProcessDisplayLeaveMessageInput();
                         return false;
 
                     default:
@@ -502,6 +507,7 @@ namespace SurvieEnTerreInconnue
                         return true;
 
                     case ConsoleKey.Q:
+                        Menu.ProcessDisplayLeaveMessageInput();
                         return false;
 
                     default:
