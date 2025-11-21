@@ -387,22 +387,22 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-
         public static void DisplayInventoryMenu1()
         {
             Console.Clear();
             Display.DisplayInventoryItem1();
             Console.WriteLine();
 
-            Console.WriteLine("\t\t***********************************");
-            Console.WriteLine($"Nombres de Fer en stock: ");
-            Console.WriteLine($"Nombres de Bois en stock: ");
-            Console.WriteLine($"Nombres de Silex en stock: ");
-            Console.WriteLine($"Nombres d'Argiles en stock: ");
-            Console.WriteLine($"Nombres d'Herbes en stock: ");
-            Console.WriteLine($"Nombres de Sable en stock: ");
-            Console.WriteLine("\t\t***********************************");
+            Console.WriteLine("\t\t*************************************************");
+            Console.WriteLine($"Nombres de Fer en stock:    {Map.resourceAmounts[0]}");
+            Console.WriteLine($"Nombres de Bois en stock:   {Map.resourceAmounts[1]}");
+            Console.WriteLine($"Nombres de Silex en stock:  {Map.resourceAmounts[2]}");
+            Console.WriteLine($"Nombres d'Argiles en stock: {Map.resourceAmounts[3]}");
+            Console.WriteLine($"Nombres d'Herbes en stock:  {Map.resourceAmounts[4]}");
+            Console.WriteLine($"Nombres de Sable en stock:  {Map.resourceAmounts[5]}");
+            Console.WriteLine("\t\t*************************************************");
         }
+
 
         public static void DisplayInventoryMenu2()
         {
@@ -410,15 +410,16 @@ namespace SurvieEnTerreInconnue
             Display.DisplayInventoryItem2();
             Console.WriteLine();
 
-            Console.WriteLine("\t\t**********************************");
-            Console.WriteLine($"Nombres de Feu en stock: ");
-            Console.WriteLine($"Nombres de Haches en stock: ");
-            Console.WriteLine($"Nombres de Vitre en stock: ");
-            Console.WriteLine($"Nombres de Planche en stock: ");
-            Console.WriteLine($"Nombres de Briques en stock: ");
-            Console.WriteLine($"Nombres d'Isolants en stock: ");
-            Console.WriteLine($"Nombres de Maisons en stock: ");
-            Console.WriteLine("\t\t**********************************");
+            Console.WriteLine("\t\t***********************************");
+            Console.WriteLine($"Nombres de Feu en stock:     {Map.resourceAmounts[6]}");
+            Console.WriteLine($"Nombres de Haches en stock:  {Map.resourceAmounts[7]}");
+            Console.WriteLine($"Nombres de Vitre en stock:   {Map.resourceAmounts[8]}");
+            Console.WriteLine($"Nombres de Planche en stock: {Map.resourceAmounts[9]}");
+            Console.WriteLine($"Nombres de Briques en stock: {Map.resourceAmounts[10]}");
+            Console.WriteLine($"Nombres d'Isolants en stock: {Map.resourceAmounts[11]}");
+            Console.WriteLine($"Nombres de Maisons en stock: {Map.resourceAmounts[12]}");
+            Console.WriteLine("\t\t***********************************");
         }
+
     }
 }

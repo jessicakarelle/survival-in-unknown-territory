@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,18 @@ namespace SurvieEnTerreInconnue
 {
     internal class Map
     {
-        public static int playerPostionX = 0;
-        public static int playerPostionY = 0;
+        public static int playerPositionX = 0;
+        public static int playerPositionY = 0;
 
         public static int[,] mapGrid = new int[10, 10];
         public static bool[,] discovered = new bool[10, 10];
 
-        public static Random RandomGenerator = new Random();
+        public static Random randomGenerator = new Random();
 
+        public static string[] resourceNames = {"Fer", "Bois", "Silex", "Argile", "Herbes", "Sable",
+                                "Feu", "Haches", "Vitre", "Planche", "Briques", "Isolants", "Maisons" };
+
+        public static int[] resourceAmounts = {0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0 };
 
         // Générer la carte au début
         public static void GenerateMap()
@@ -32,7 +37,7 @@ namespace SurvieEnTerreInconnue
                     }
                     else
                     {
-                        mapGrid[i, j] = RandomGenerator.Next(1, 7);
+                        mapGrid[i, j] = randomGenerator.Next(1, 7);
                     }
                 }
             }
@@ -47,7 +52,7 @@ namespace SurvieEnTerreInconnue
                 for (int j = 0; j < mapGrid.GetLength(1); j++)
                 {
                     // Si c'est la position du joueur
-                    if (playerPostionX == j && playerPostionY == i)
+                    if (playerPositionX == j && playerPositionY == i)
                     {
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -79,7 +84,7 @@ namespace SurvieEnTerreInconnue
             switch (terrain)
             {
                 case 0: // Base
-                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.BackgroundColor = ConsoleColor.White;
                     break;
                 case 1: // Forêt
                     Console.BackgroundColor = ConsoleColor.DarkGreen;
@@ -88,13 +93,13 @@ namespace SurvieEnTerreInconnue
                     Console.BackgroundColor = ConsoleColor.Green;
                     break;
                 case 3: // Désert
-                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                    Console.BackgroundColor = ConsoleColor.Yellow;
                     break;
                 case 4: // Rivière
                     Console.BackgroundColor = ConsoleColor.Blue;
                     break;
                 case 5: // Marais
-                    Console.BackgroundColor = ConsoleColor.DarkCyan;
+                    Console.BackgroundColor = ConsoleColor.Gray;
                     break;
                 case 6: // Montagne
                     Console.BackgroundColor = ConsoleColor.DarkGray;
@@ -105,9 +110,44 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        public static void CollectMaterials()
+        {
+            string terrain = GetCurrentTerrain();
+
+            switch (terrain)
+            {
+                case "Base":
+                    Console.WriteLine("Vous ne pouvez rien collecter ici.");
+                    break;
+
+                case "Forêt":
+                    Console.WriteLine("Vous collectez du bois !");
+                    resourceAmounts[0]++;
+                    break;
+
+                case "Prairie":
+                    Console.WriteLine("Vous collectez des fruits !");
+                    resourceAmounts[1]++;
+                    break;
+                case "Désert":
+                    resourceAmounts[2]++;
+                    break;
+                case "Riviere":
+                    resourceAmounts[3]++;
+                    break;
+                case "Marais":
+                    resourceAmounts[4]++;
+                    break;
+                case "Montagne":
+                    resourceAmounts[5]++;
+                    break;
+            }
+        }
+
+
         public static string GetCurrentTerrain()
         {
-            int terrain = mapGrid[playerPostionY, playerPostionX];
+            int terrain = mapGrid[playerPositionY, playerPositionX];
 
             switch (terrain)
             {
@@ -124,7 +164,7 @@ namespace SurvieEnTerreInconnue
 
         public static void ShowTerrainAtCurrentPosition()
         {
-            discovered[playerPostionY, playerPostionX] = true;
+            discovered[playerPositionY, playerPositionX] = true;
             string terrain = GetCurrentTerrain();
 
             switch (terrain)
@@ -253,7 +293,7 @@ namespace SurvieEnTerreInconnue
             Console.Clear();
             DisplayGridMap();
             Console.WriteLine();
-            Console.WriteLine($"Position du joueur: ({playerPostionX}, {playerPostionY}) - {GetCurrentTerrain()}");
+            Console.WriteLine($"Position du joueur: ({playerPositionX}, {playerPositionY}) - {GetCurrentTerrain()}");
             Console.WriteLine();
             Console.ResetColor();
             Console.WriteLine("Veuillez sélectionner une option :");
@@ -286,10 +326,10 @@ namespace SurvieEnTerreInconnue
                 {
                     case ConsoleKey.N:
                     case ConsoleKey.UpArrow:
-                        if (playerPostionY > 0) 
+                        if (playerPositionY > 0) 
                         {
-                            playerPostionY--; 
-                            discovered[playerPostionY, playerPostionX] = true;
+                            playerPositionY--; 
+                            discovered[playerPositionY, playerPositionX] = true;
                         }
                         else
                         {
@@ -302,10 +342,10 @@ namespace SurvieEnTerreInconnue
 
                     case ConsoleKey.O:
                     case ConsoleKey.LeftArrow:
-                        if (playerPostionX > 0)
+                        if (playerPositionX > 0)
                         {
-                            playerPostionX--;
-                            discovered[playerPostionY, playerPostionX] = true;
+                            playerPositionX--;
+                            discovered[playerPositionY, playerPositionX] = true;
                         }
                         else
                         {
@@ -317,10 +357,10 @@ namespace SurvieEnTerreInconnue
 
                     case ConsoleKey.S:
                     case ConsoleKey.DownArrow:
-                        if (playerPostionY < mapGrid.GetLength(0) - 1) 
+                        if (playerPositionY < mapGrid.GetLength(0) - 1) 
                         {
-                            playerPostionY++; 
-                            discovered[playerPostionY, playerPostionX] = true;
+                            playerPositionY++; 
+                            discovered[playerPositionY, playerPositionX] = true;
                         }
                         else
                         {
@@ -331,10 +371,10 @@ namespace SurvieEnTerreInconnue
                         break;
                     case ConsoleKey.E:
                     case ConsoleKey.RightArrow:
-                        if (playerPostionX < mapGrid.GetLength(1) - 1)
+                        if (playerPositionX < mapGrid.GetLength(1) - 1)
                         {
-                            playerPostionX++;
-                            discovered[playerPostionY, playerPostionX] = true;
+                            playerPositionX++;
+                            discovered[playerPositionY, playerPositionX] = true;
                         }
                         else
                         {
@@ -437,6 +477,7 @@ namespace SurvieEnTerreInconnue
                         break;
 
                     case ConsoleKey.C:
+                        CollectMaterials();
                         break;
 
                     case ConsoleKey.R:

@@ -14,8 +14,9 @@
             Map.ShowTerrainAtCurrentPosition();
             */
             // OU si tu veux juste te déplacer directement :
-            Map.GenerateMap();
-            Map.ProcessExplorationInput();
+            /*Map.GenerateMap();
+            Map.ProcessExplorationInput();*/
+            Menu.ProcessInventoryInput();
         }
     }
 }
