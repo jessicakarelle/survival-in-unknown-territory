@@ -12,36 +12,170 @@ namespace SurvieEnTerreInconnue
         public static int playerPostionX = 0;
         public static int playerPostionY = 0;
 
-        public static int[,] mapGrid = new int[20, 20];
+        public static int[,] mapGrid = new int[10, 10];
+        public static bool[,] discovered = new bool[10, 10];
 
-        public static Random PositionGenerator = new Random();
-        public static List<String> SavePosition = new List<String>();
+        public static Random RandomGenerator = new Random();
 
-        public static void DisplayGridMap()
+
+        // Générer la carte au début
+        public static void GenerateMap()
         {
-            // Boucle sur les colomnes
-            for(int i= 0; i < mapGrid.GetLength(0); i++)
+            for (int i = 0; i < mapGrid.GetLength(0); i++)
             {
-                //Boucles pour les lignes
-                for(int j = 0; j < mapGrid.GetLength(1); j++)
+                for (int j = 0; j < mapGrid.GetLength(1); j++)
                 {
-                    if(playerPostionX == j && playerPostionY == i)
+                    if (i == 0 && j == 0)
                     {
-                        Console.Write("| ");
+                        mapGrid[i, j] = 0; // Base
+                        discovered[i, j] = true;
                     }
                     else
                     {
-                        Console.Write("| ");
+                        mapGrid[i, j] = RandomGenerator.Next(1, 7);
                     }
                 }
-                Console.ForegroundColor = ConsoleColor.White;
-                for (int j = 0; j < 20; j++)
-                {
-                    Console.Write("--");
-                }
-                Console.ResetColor();
             }
         }
+
+        // Afficher la carte avec des couleurs de fond
+        public static void DisplayGridMap()
+        {
+            Console.Clear();
+            for (int i = 0; i < mapGrid.GetLength(0); i++)
+            {
+                for (int j = 0; j < mapGrid.GetLength(1); j++)
+                {
+                    // Si c'est la position du joueur
+                    if (playerPostionX == j && playerPostionY == i)
+                    {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(" @ ");
+                        Console.ResetColor();
+                    }
+                    // Si découvert
+                    else if (discovered[i, j])
+                    {
+                        int terrain = mapGrid[i, j];
+                        SetTerrainColor(terrain);
+                        Console.Write("   ");
+                        Console.ResetColor();
+                    }
+                    // Non découvert
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.Write("   ");
+                        Console.ResetColor();
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public static void SetTerrainColor(int terrain)
+        {
+            switch (terrain)
+            {
+                case 0: // Base
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    break;
+                case 1: // Forêt
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    break;
+                case 2: // Prairie
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    break;
+                case 3: // Désert
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case 4: // Rivière
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    break;
+                case 5: // Marais
+                    Console.BackgroundColor = ConsoleColor.DarkCyan;
+                    break;
+                case 6: // Montagne
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    break;
+            }
+        }
+
+        public static string GetCurrentTerrain()
+        {
+            int terrain = mapGrid[playerPostionY, playerPostionX];
+
+            switch (terrain)
+            {
+                case 0: return "Base";
+                case 1: return "Forêt";
+                case 2: return "Prairie";
+                case 3: return "Désert";
+                case 4: return "Rivière";
+                case 5: return "Marais";
+                case 6: return "Montagne";
+                default: return "Base";
+            }
+        }
+
+        public static void ShowTerrainAtCurrentPosition()
+        {
+            discovered[playerPostionY, playerPostionX] = true;
+            string terrain = GetCurrentTerrain();
+
+            switch (terrain)
+            {
+                case "Base":
+                    ProcessDisplayBaseInput();
+                    break;
+                case "Forêt":
+                    ProcessDisplayForestInput();
+                    break;
+                case "Prairie":
+                    ProcessDisplayPrairieInput();
+                    break;
+                case "Désert":
+                    ProcessDisplayDesertInput();
+                    break;
+                case "Rivière":
+                    ProcessDisplayRiverInput();
+                    break;
+                case "Marais":
+                    ProcessDisplaySwampInput();
+                    break;
+                case "Montagne":
+                    ProcessDisplayMountainInput();
+                    break;
+            }
+        }
+
+        public static ConsoleKey DisplayTerrainMenu(string terrainName)
+        {
+            Console.ResetColor();
+            Thread.Sleep(1000);
+            Console.WriteLine();
+            Display.AnimateText($"Vous êtes actuellement {terrainName}");
+            Console.WriteLine();
+            Console.WriteLine();
+            Display.AnimateText("Veuillez sélectionner une action à effectuer :");
+            Console.WriteLine();
+            Thread.Sleep(100);
+            Console.WriteLine("[E]xplorer les différents territoires");
+            Console.WriteLine("[A]fficher l'inventaire");
+            Console.WriteLine("[C]ollecter des ressources");
+            Console.WriteLine("[R]etour au menu principal");
+            Console.WriteLine("[Q]uitter le jeu");
+            Console.WriteLine();
+            Console.Write("Votre choix : ");
+
+            ConsoleKeyInfo selectedAction = Console.ReadKey();
+            return selectedAction.Key;
+        }
+
         public static ConsoleKey DisplayBase()
         {
             Console.Clear();
@@ -63,7 +197,7 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine("[Q]uitter le jeu");
             Console.WriteLine();
             Console.Write("Votre choix : ");
-            
+
             ConsoleKeyInfo selectedAction = Console.ReadKey();
             return selectedAction.Key;
         }
@@ -82,6 +216,7 @@ namespace SurvieEnTerreInconnue
                 {
                     case ConsoleKey.E:
                         ProcessExplorationInput();
+                        stayAtBase = false;
                         break;
 
                     case ConsoleKey.A:
@@ -93,8 +228,9 @@ namespace SurvieEnTerreInconnue
                         break;
 
                     case ConsoleKey.R:
+                        stayAtBase = false;
                         Menu.ProcessDisplayMenuInput();
-                        return true;
+                        break;
 
                     case ConsoleKey.Q:
                         Menu.ProcessDisplayLeaveMessageInput();
@@ -113,15 +249,21 @@ namespace SurvieEnTerreInconnue
 
         public static ConsoleKey DisplayDirection()
         {
+           
             Console.Clear();
+            DisplayGridMap();
+            Console.WriteLine();
+            Console.WriteLine($"Position du joueur: ({playerPostionX}, {playerPostionY}) - {GetCurrentTerrain()}");
+            Console.WriteLine();
             Console.ResetColor();
-            Display.AnimateText("Veuillez sélectionner une option :");
+            Console.WriteLine("Veuillez sélectionner une option :");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("[N]ord : Vous vous déplacez vers le haut");
             Console.WriteLine("[O]uest : Vous vous déplacez vers la gauche");
             Console.WriteLine("[S]ud : Vous vous déplacez vers le bas");
             Console.WriteLine("[E]st : Vous vous déplacez vers la droite");
+            Console.WriteLine("[I]nteragir avec le terrain actuel");
             Console.WriteLine("[M]enu : Retour au menu principal");
             Console.WriteLine("[Q]uitter : Quitter le jeu");
             Console.WriteLine();
@@ -144,42 +286,67 @@ namespace SurvieEnTerreInconnue
                 {
                     case ConsoleKey.N:
                     case ConsoleKey.UpArrow:
-                        playerPostionY++;
-                        Console.Clear();
-                        Display.AnimateText("Vous vous êtes déplacer vers le Nord");
-                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
-                        Console.WriteLine("\nAppuyez sur une touche pour continuer...");
-                        Console.ReadKey();
+                        if (playerPostionY > 0) 
+                        {
+                            playerPostionY--; 
+                            discovered[playerPostionY, playerPostionX] = true;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Display.AnimateText("Vous ne pouvez pas aller plus au Nord !");
+                            Thread.Sleep(1500);
+                        }
                         break;
+
 
                     case ConsoleKey.O:
                     case ConsoleKey.LeftArrow:
-                        playerPostionX--;
-                        Console.Clear();
-                        Display.AnimateText("Vous vous êtes déplacer vers l' Ouest");
-                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
-                        Console.WriteLine("\nAppuyez sur une touche pour continuer...");
-                        Console.ReadKey();
+                        if (playerPostionX > 0)
+                        {
+                            playerPostionX--;
+                            discovered[playerPostionY, playerPostionX] = true;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Display.AnimateText("Vous ne pouvez pas aller plus à l'Ouest !");
+                            Thread.Sleep(1500);
+                        }
                         break;
 
                     case ConsoleKey.S:
                     case ConsoleKey.DownArrow:
-                        playerPostionY--;
-                        Console.Clear();
-                        Display.AnimateText("Vous vous êtes déplacer vers le Sud");
-                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
-                        Console.WriteLine("\nAppuyez sur une touche pour continuer...");
-                        Console.ReadKey();
+                        if (playerPostionY < mapGrid.GetLength(0) - 1) 
+                        {
+                            playerPostionY++; 
+                            discovered[playerPostionY, playerPostionX] = true;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Display.AnimateText("Vous ne pouvez pas aller plus au Sud !");
+                            Thread.Sleep(1500);
+                        }
                         break;
-
                     case ConsoleKey.E:
                     case ConsoleKey.RightArrow:
-                        playerPostionX++;
-                        Console.Clear();
-                        Display.AnimateText("Vous vous êtes déplacer vers le Sud");
-                        Display.AnimateText("\nN'oubliez pas de collecter des ressources !");
-                        Console.WriteLine("\nAppuyez sur une touche pour continuer...");
-                        Console.ReadKey();
+                        if (playerPostionX < mapGrid.GetLength(1) - 1)
+                        {
+                            playerPostionX++;
+                            discovered[playerPostionY, playerPostionX] = true;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Display.AnimateText("Vous ne pouvez pas aller plus à l'Est !");
+                            Thread.Sleep(1500);
+                        }
+                        break;
+
+                    case ConsoleKey.I:
+                        ShowTerrainAtCurrentPosition();
+                        exploring = false;
                         break;
 
                     case ConsoleKey.M:
@@ -209,351 +376,73 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplayForestPosition();
-            Thread.Sleep(1000);
-            Console.WriteLine();
-            Display.AnimateText("Vous êtes actuellement dans la forêt");
-            Console.WriteLine();
-            Console.WriteLine();
-            Display.AnimateText("Veuillez sélectionner une action à effectuer :");
-            Console.WriteLine();
-            Thread.Sleep(100);
-            Console.WriteLine("[E]xplorer les différents territoires");
-            Console.WriteLine("[A]fficher l'inventaire");
-            Console.WriteLine("[C]ollecter des ressources");
-            Console.WriteLine("[R]etour au menu principal");
-            Console.WriteLine("[Q]uitter le jeu");
-            Console.WriteLine();
-            Console.Write("Votre choix : ");
-
-            ConsoleKeyInfo selectedAction = Console.ReadKey();
-            return selectedAction.Key;
+            return DisplayTerrainMenu("dans la forêt");
         }
 
-        public static bool ProcessDisplayForestInput()
-        {
-            bool stayInForest = true;
-
-            while (stayInForest)
-            {
-                ConsoleKey input = DisplayForest();
-                Console.WriteLine();
-
-                switch (input)
-                {
-                    case ConsoleKey.E:
-                        ProcessExplorationInput();
-                        break;
-
-                    case ConsoleKey.A:
-                        break;
-                    case ConsoleKey.C:  
-                        break;
-                    case ConsoleKey.R:
-                        return true;
-
-                    case ConsoleKey.Q:
-                        Menu.ProcessDisplayLeaveMessageInput();
-                        return false;
-
-                    default:
-                        Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Thread.Sleep(500);
-                        break;
-                }
-            }
-
-            return true;
-        }
         public static ConsoleKey DisplayPrairie()
         {
             Console.Clear();
             Display.DisplayPrairiePosition();
-            Thread.Sleep(1000);
-            Console.WriteLine();
-            Display.AnimateText("Vous êtes actuellement dans la prairie");
-            Console.WriteLine();
-            Console.WriteLine();
-            Display.AnimateText("Veuillez sélectionner une action à effectuer :");
-            Console.WriteLine();
-            Thread.Sleep(100);
-            Console.WriteLine("[E]xplorer les différents territoires");
-            Console.WriteLine("[A]fficher l'inventaire");
-            Console.WriteLine("[C]ollecter des ressources");
-            Console.WriteLine("[R]etour au menu principal");
-            Console.WriteLine("[Q]uitter le jeu");
-            Console.WriteLine();
-            Console.Write("Votre choix : ");
-
-            ConsoleKeyInfo selectedAction = Console.ReadKey();
-            return selectedAction.Key;
+            return DisplayTerrainMenu("dans la prairie");
         }
 
-        public static bool ProcessDisplayPrairieInput()
-        {
-            bool stayInPrairie = true;
-
-            while (stayInPrairie)
-            {
-                ConsoleKey input = DisplayPrairie();
-                Console.WriteLine();
-
-                switch (input)
-                {
-                    case ConsoleKey.E:
-                        ProcessExplorationInput();
-                        break;
-
-                    case ConsoleKey.A:
-                        break;
-                    case ConsoleKey.C:
-                        break;
-                    case ConsoleKey.R:
-                        return true;
-
-                    case ConsoleKey.Q:
-                        Menu.ProcessDisplayLeaveMessageInput();
-                        return false;
-
-                    default:
-                        Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Thread.Sleep(500);
-                        break;
-                }
-            }
-
-            return true;
-        }
-    
         public static ConsoleKey DisplayDesert()
         {
             Console.Clear();
             Display.DisplayDesertPosition();
-            Thread.Sleep(1000);
-            Console.WriteLine();
-            Display.AnimateText("Vous êtes actuellement dans le désert");
-            Console.WriteLine();
-            Console.WriteLine();
-            Display.AnimateText("Veuillez sélectionner une action à effectuer :");
-            Console.WriteLine();
-            Thread.Sleep(100);
-            Console.WriteLine("[E]xplorer les différents territoires");
-            Console.WriteLine("[A]fficher l'inventaire");
-            Console.WriteLine("[C]ollecter des ressources");
-            Console.WriteLine("[R]etour au menu principal");
-            Console.WriteLine("[Q]uitter le jeu");
-            Console.WriteLine();
-            Console.Write("Votre choix : ");
-
-            ConsoleKeyInfo selectedAction = Console.ReadKey();
-            return selectedAction.Key;
-        }
-
-        public static bool ProcessDisplayDesertInput()
-        {
-            bool stayInDesert = true;
-
-            while (stayInDesert)
-            {
-                ConsoleKey input = DisplayDesert();
-                Console.WriteLine();
-
-                switch (input)
-                {
-                    case ConsoleKey.E:
-                        ProcessExplorationInput();
-                        break;
-
-                    case ConsoleKey.A:
-                        break;
-                    case ConsoleKey.C:
-                        break;
-                    case ConsoleKey.R:
-                        return true;
-
-                    case ConsoleKey.Q:
-                        Menu.ProcessDisplayLeaveMessageInput();
-                        return false;
-
-                    default:
-                        Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Thread.Sleep(500);
-                        break;
-                }
-            }
-
-            return true;
+            return DisplayTerrainMenu("dans le désert");
         }
 
         public static ConsoleKey DisplayRiver()
         {
             Console.Clear();
             Display.DisplayRiverPosition();
-            Thread.Sleep(1000);
-            Console.WriteLine();
-            Display.AnimateText("Vous êtes actuellement près de la rivière");
-            Console.WriteLine();
-            Console.WriteLine();
-            Display.AnimateText("Veuillez sélectionner une action à effectuer :");
-            Console.WriteLine();
-            Thread.Sleep(100);
-            Console.WriteLine("[E]xplorer les différents territoires");
-            Console.WriteLine("[A]fficher l'inventaire");
-            Console.WriteLine("[C]ollecter des ressources");
-            Console.WriteLine("[R]etour au menu principal");
-            Console.WriteLine("[Q]uitter le jeu");
-            Console.WriteLine();
-            Console.Write("Votre choix : ");
-
-            ConsoleKeyInfo selectedAction = Console.ReadKey();
-            return selectedAction.Key;
-        }
-
-        public static bool ProcessDisplayRiverInput()
-        {
-            bool stayAtRiver = true;
-
-            while (stayAtRiver)
-            {
-                ConsoleKey input = DisplayRiver();
-                Console.WriteLine();
-
-                switch (input)
-                {
-                    case ConsoleKey.E:
-                        ProcessExplorationInput();
-                        break;
-
-                    case ConsoleKey.A:
-                        break;
-                    case ConsoleKey.C:
-                        break;
-                    case ConsoleKey.R:
-                        return true;
-
-                    case ConsoleKey.Q:
-                        Menu.ProcessDisplayLeaveMessageInput();
-                        return false;
-
-                    default:
-                        Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Thread.Sleep(500);
-                        break;
-                }
-            }
-
-            return true;
+            return DisplayTerrainMenu("près de la rivière");
         }
 
         public static ConsoleKey DisplaySwamp()
         {
             Console.Clear();
             Display.DisplaySwampPosition();
-            Thread.Sleep(1000);
-            Console.WriteLine();
-            Display.AnimateText("Vous êtes actuellement dans le marais");
-            Console.WriteLine();
-            Console.WriteLine();
-            Display.AnimateText("Veuillez sélectionner une action à effectuer :");
-            Console.WriteLine();
-            Thread.Sleep(100);
-            Console.WriteLine("[E]xplorer les différents territoires");
-            Console.WriteLine("[A]fficher l'inventaire");
-            Console.WriteLine("[C]ollecter des ressources");
-            Console.WriteLine("[R]etour au menu principal");
-            Console.WriteLine("[Q]uitter le jeu");
-            Console.WriteLine();
-            Console.Write("Votre choix : ");
-
-            ConsoleKeyInfo selectedAction = Console.ReadKey();
-            return selectedAction.Key;
-        }
-
-        public static bool ProcessDisplaySwampInput()
-        {
-            bool stayInSwamp = true;
-
-            while (stayInSwamp)
-            {
-                ConsoleKey input = DisplaySwamp();
-                Console.WriteLine();
-
-                switch (input)
-                {
-                    case ConsoleKey.E:
-                        ProcessExplorationInput();
-                        break;
-
-                    case ConsoleKey.A:
-                        break;
-                    case ConsoleKey.C:
-                        break;
-                    case ConsoleKey.R:
-                        return true;
-
-                    case ConsoleKey.Q:
-                        Menu.ProcessDisplayLeaveMessageInput();
-                        return false;
-
-                    default:
-                        Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Thread.Sleep(500);
-                        break;
-                }
-            }
-
-            return true;
+            return DisplayTerrainMenu("dans le marais");
         }
 
         public static ConsoleKey DisplayMountain()
         {
             Console.Clear();
             Display.DisplayMountainPosition();
-            Thread.Sleep(1000);
-            Console.WriteLine();
-            Display.AnimateText("Vous êtes actuellement dans la montagne");
-            Console.WriteLine();
-            Console.WriteLine();
-            Display.AnimateText("Veuillez sélectionner une action à effectuer :");
-            Console.WriteLine();
-            Thread.Sleep(100);
-            Console.WriteLine("[E]xplorer les différents territoires");
-            Console.WriteLine("[A]fficher l'inventaire");
-            Console.WriteLine("[C]ollecter des ressources");
-            Console.WriteLine("[R]etour au menu principal");
-            Console.WriteLine("[Q]uitter le jeu");
-            Console.WriteLine();
-            Console.Write("Votre choix : ");
-
-            ConsoleKeyInfo selectedAction = Console.ReadKey();
-            return selectedAction.Key;
+            return DisplayTerrainMenu("dans la montagne");
         }
-
-        public static bool ProcessDisplayMountainInput()
+        // Fonction qui gère le menu de tous les terrains à la fois
+        // displayFunction = la fonction d'affichage du terrain (DisplayForest, DisplayDesert, etc.)
+        // Évite de répéter le même code 6 fois pour chaque terrain
+        public static bool ProcessTerrainInput(Func<ConsoleKey> displayFunction)
         {
-            bool stayInMountain = true;
+            bool stayInTerrain = true;
 
-            while (stayInMountain)
+            while (stayInTerrain)
             {
-                ConsoleKey input = DisplayMountain();
+                ConsoleKey input = displayFunction();
                 Console.WriteLine();
 
                 switch (input)
                 {
                     case ConsoleKey.E:
                         ProcessExplorationInput();
+                        stayInTerrain = false;
                         break;
 
                     case ConsoleKey.A:
+                        Menu.ProcessInventoryInput();
                         break;
+
                     case ConsoleKey.C:
                         break;
+
                     case ConsoleKey.R:
-                        return true;
+                        stayInTerrain = false;
+                        Menu.ProcessDisplayMenuInput();
+                        break;
 
                     case ConsoleKey.Q:
                         Menu.ProcessDisplayLeaveMessageInput();
@@ -568,6 +457,36 @@ namespace SurvieEnTerreInconnue
             }
 
             return true;
+        }
+
+        public static bool ProcessDisplayForestInput()
+        {
+            return ProcessTerrainInput(DisplayForest);
+        }
+
+        public static bool ProcessDisplayPrairieInput()
+        {
+            return ProcessTerrainInput(DisplayPrairie);
+        }
+
+        public static bool ProcessDisplayDesertInput()
+        {
+            return ProcessTerrainInput(DisplayDesert);
+        }
+
+        public static bool ProcessDisplayRiverInput()
+        {
+            return ProcessTerrainInput(DisplayRiver);
+        }
+
+        public static bool ProcessDisplaySwampInput()
+        {
+            return ProcessTerrainInput(DisplaySwamp);
+        }
+
+        public static bool ProcessDisplayMountainInput()
+        {
+            return ProcessTerrainInput(DisplayMountain);
         }
     }
 }

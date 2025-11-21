@@ -4,20 +4,18 @@
     {
         static void Main(string[] args)
         {
-            Map.ProcessDisplayBaseInput();
-            //Map.ProcessDisplayForestInput();
-            //Map.ProcessDisplayMountainInput();
-            //Map.ProcessDisplayPrairieInput();
-            /*Display.DisplayGameTitle();
-            Console.Clear();
-            Menu.DisplayGameHistory();
-            Console.Clear();
+            /*Map.GenerateMap();
+
+            Map.DisplayGridMap();
+
+            Console.WriteLine("\nAppuyez sur une touche pour commencer à explorer...");
+            Console.ReadKey();
+
+            Map.ShowTerrainAtCurrentPosition();
             */
-            //Menu.ProcessDisplayMenuInput();
-            //Menu.DisplayManufacturingMenu();
-            // Menu.ProcessInventoryInput();*/
-            // Menu.ProcessDisplayEndMessageInput();
-            //Map.DisplayGridMap();
+            // OU si tu veux juste te déplacer directement :
+            Map.GenerateMap();
+            Map.ProcessExplorationInput();
         }
     }
 }
