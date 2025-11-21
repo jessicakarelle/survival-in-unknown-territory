@@ -12,18 +12,13 @@ namespace SurvieEnTerreInconnue
     {
         public static int playerPositionX = 0;
         public static int playerPositionY = 0;
-
         public static int[,] mapGrid = new int[10, 10];
         public static bool[,] discovered = new bool[10, 10];
-
         public static Random randomGenerator = new Random();
-
         public static string[] resourceNames = {"Fer", "Bois", "Silex", "Argile", "Herbes", "Sable",
                                 "Feu", "Haches", "Vitre", "Planche", "Briques", "Isolants", "Maisons" };
-
         public static int[] resourceAmounts = {0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0 };
 
-        // Générer la carte au début
         public static void GenerateMap()
         {
             for (int i = 0; i < mapGrid.GetLength(0); i++)
@@ -121,28 +116,41 @@ namespace SurvieEnTerreInconnue
                     break;
 
                 case "Forêt":
-                    Console.WriteLine("Vous collectez du bois !");
-                    resourceAmounts[0]++;
+                    Console.WriteLine("Vous collectez du Bois !");
+                    resourceAmounts[1]++; 
                     break;
 
                 case "Prairie":
-                    Console.WriteLine("Vous collectez des fruits !");
-                    resourceAmounts[1]++;
+                    Console.WriteLine("Vous collectez de l'Herbe !");
+                    resourceAmounts[4]++; 
                     break;
+
                 case "Désert":
-                    resourceAmounts[2]++;
-                    break;
-                case "Riviere":
-                    resourceAmounts[3]++;
-                    break;
-                case "Marais":
-                    resourceAmounts[4]++;
-                    break;
-                case "Montagne":
+                    Console.WriteLine("Vous collectez du Sable !");
                     resourceAmounts[5]++;
+                    break;
+
+                case "Rivière":
+                    Console.WriteLine("Vous collectez du Silex !");
+                    resourceAmounts[2]++; 
+                    break;
+
+                case "Marais":
+                    Console.WriteLine("Vous collectez de l'Argile !");
+                    resourceAmounts[3]++; 
+                    break;
+
+                case "Montagne":
+                    Console.WriteLine("Vous collectez du Fer !");
+                    resourceAmounts[0]++;
+                    break;
+
+                default:
+                    Console.WriteLine("Terrain inconnu, rien à collecter.");
                     break;
             }
         }
+
 
 
         public static string GetCurrentTerrain()
@@ -477,8 +485,11 @@ namespace SurvieEnTerreInconnue
                         break;
 
                     case ConsoleKey.C:
-                        CollectMaterials();
+                        Map.CollectMaterials();
+                        Console.WriteLine("\nAppuyez sur une touche pour continuer...");
+                        Console.ReadKey();
                         break;
+
 
                     case ConsoleKey.R:
                         stayInTerrain = false;

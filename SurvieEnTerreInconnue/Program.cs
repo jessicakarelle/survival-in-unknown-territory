@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            /*Map.GenerateMap();
+            Map.GenerateMap();
 
             Map.DisplayGridMap();
 
@@ -12,11 +12,10 @@
             Console.ReadKey();
 
             Map.ShowTerrainAtCurrentPosition();
-            */
-            // OU si tu veux juste te déplacer directement :
+           
             /*Map.GenerateMap();
             Map.ProcessExplorationInput();*/
-            Menu.ProcessInventoryInput();
+            //Menu.ProcessInventoryInput();
         }
     }
 }

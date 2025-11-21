@@ -228,16 +228,16 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine();
 
             Console.WriteLine("\t\t***********************************************************");
-            Console.WriteLine("[F]eu : Cette action nécessite du Bois et du Silex");
-            Console.WriteLine("[H]ache : Cette action nécessite du Bois et Du Fer");
-            Console.WriteLine("[V]itre : Cette action nécessite du Sable et du Feu");
-            Console.WriteLine("[P]lanche : Cette action nécessite du Bois ainsi qu'une Hache");
-            Console.WriteLine("[B]rique : Cette action nécessite du Feu et de l'Argile");
-            Console.WriteLine("[I]solant : Cette action nécessite 3x de l'herbe");
-            Console.WriteLine("[M]aison : Cette action nécessite 4x des Planches, 4x des Isolants, 4x des Briques ainsi que 2x des Vitres");
-            Console.WriteLine("[N]ourriture : Cette action nécéssite du Feu et du Bois ");
-            Console.WriteLine("[C]onsulter Inventaire : Vous pouvez consulter votre inventaire");
-            Console.WriteLine("[R]etour au menu principal");
+            Console.WriteLine("\t\t[F]eu : Cette action nécessite du Bois et du Silex");
+            Console.WriteLine("\t\t[H]ache : Cette action nécessite du Bois et Du Fer");
+            Console.WriteLine("\t\t[V]itre : Cette action nécessite du Sable et du Feu");
+            Console.WriteLine("\t\t[P]lanche : Cette action nécessite du Bois ainsi qu'une Hache");
+            Console.WriteLine("\t\t[B]rique : Cette action nécessite du Feu et de l'Argile");
+            Console.WriteLine("\t\t[I]solant : Cette action nécessite 3x de l'herbe");
+            Console.WriteLine("\t\t[M]aison : Cette action nécessite 4x des Planches, 4x des Isolants, 4x des Briques ainsi que 2x des Vitres");
+            Console.WriteLine("\t\t[N]ourriture : Cette action nécéssite du Feu et du Bois ");
+            Console.WriteLine("\t\t[C]onsulter Inventaire : Vous pouvez consulter votre inventaire");
+            Console.WriteLine("\t\t[R]etour au menu principal");
             Console.WriteLine("[Q]uitter le jeu");
             Console.WriteLine("\t\t***********************************************************");
             Console.WriteLine();
@@ -393,33 +393,34 @@ namespace SurvieEnTerreInconnue
             Display.DisplayInventoryItem1();
             Console.WriteLine();
 
-            Console.WriteLine("\t\t*************************************************");
-            Console.WriteLine($"Nombres de Fer en stock:    {Map.resourceAmounts[0]}");
-            Console.WriteLine($"Nombres de Bois en stock:   {Map.resourceAmounts[1]}");
-            Console.WriteLine($"Nombres de Silex en stock:  {Map.resourceAmounts[2]}");
-            Console.WriteLine($"Nombres d'Argiles en stock: {Map.resourceAmounts[3]}");
-            Console.WriteLine($"Nombres d'Herbes en stock:  {Map.resourceAmounts[4]}");
-            Console.WriteLine($"Nombres de Sable en stock:  {Map.resourceAmounts[5]}");
-            Console.WriteLine("\t\t*************************************************");
+            Console.WriteLine("\t\t*****************************************************");
+
+            Console.WriteLine($"\t\t{"Fer".PadRight(20)}: {Map.resourceAmounts[0]}");
+            Console.WriteLine($"\t\t{"Bois".PadRight(20)}: {Map.resourceAmounts[1]}");
+            Console.WriteLine($"\t\t{"Silex".PadRight(20)}: {Map.resourceAmounts[2]}");
+            Console.WriteLine($"\t\t{"Argile".PadRight(20)}: {Map.resourceAmounts[3]}");
+            Console.WriteLine($"\t\t{"Herbe".PadRight(20)}: {Map.resourceAmounts[4]}");
+            Console.WriteLine($"\t\t{"Sable".PadRight(20)}: {Map.resourceAmounts[5]}");
+
+            Console.WriteLine("\t\t*****************************************************");
         }
-
-
         public static void DisplayInventoryMenu2()
         {
             Console.Clear();
             Display.DisplayInventoryItem2();
             Console.WriteLine();
 
-            Console.WriteLine("\t\t***********************************");
-            Console.WriteLine($"Nombres de Feu en stock:     {Map.resourceAmounts[6]}");
-            Console.WriteLine($"Nombres de Haches en stock:  {Map.resourceAmounts[7]}");
-            Console.WriteLine($"Nombres de Vitre en stock:   {Map.resourceAmounts[8]}");
-            Console.WriteLine($"Nombres de Planche en stock: {Map.resourceAmounts[9]}");
-            Console.WriteLine($"Nombres de Briques en stock: {Map.resourceAmounts[10]}");
-            Console.WriteLine($"Nombres d'Isolants en stock: {Map.resourceAmounts[11]}");
-            Console.WriteLine($"Nombres de Maisons en stock: {Map.resourceAmounts[12]}");
-            Console.WriteLine("\t\t***********************************");
-        }
+            Console.WriteLine("\t\t*****************************************************");
 
+            Console.WriteLine($"\t\t{"Feu".PadRight(20)}: {Map.resourceAmounts[6]}");
+            Console.WriteLine($"\t\t{"Hache".PadRight(20)}: {Map.resourceAmounts[7]}");
+            Console.WriteLine($"\t\t{"Vitre".PadRight(20)}: {Map.resourceAmounts[8]}");
+            Console.WriteLine($"\t\t{"Planche".PadRight(20)}: {Map.resourceAmounts[9]}");
+            Console.WriteLine($"\t\t{"Brique".PadRight(20)}: {Map.resourceAmounts[10]}");
+            Console.WriteLine($"\t\t{"Isolant".PadRight(20)}: {Map.resourceAmounts[11]}");
+            Console.WriteLine($"\t\t{"Maison".PadRight(20)}: {Map.resourceAmounts[12]}");
+
+            Console.WriteLine("\t\t*****************************************************");
+        }
     }
 }
