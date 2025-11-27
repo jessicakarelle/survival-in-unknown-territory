@@ -46,7 +46,8 @@ namespace SurvieEnTerreInconnue
 
                     case ConsoleKey.D:
                         Console.Clear();
-                        Display.DisplayWelcomeMessage();
+                        Map.GenerateMap();
+                        Map.ShowTerrainAtCurrentPosition();
                         break;
 
                     case ConsoleKey.S:
@@ -157,8 +158,8 @@ namespace SurvieEnTerreInconnue
         // Cette méthode (même si c'est peu probable qu'un joueur arrive à la fin du jeu) affichera le message de victoire du jeu
         public static void DisplayEndMessage()
         {
-            Console.WriteLine(Display.DisplayHouse()); 
-            Console.WriteLine("Vous avez reussi à vous construire une maison !");
+            Display.DisplayHouse(); 
+            Console.WriteLine("\nVous avez reussi à vous construire une maison  qui vous protègera du froid hivernal. Nous vous souhaitons bon courage pour la suite !");
         }
        
         // Cette méthode affiche le menu de fabrication du jeu

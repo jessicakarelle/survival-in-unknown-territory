@@ -41,22 +41,7 @@ namespace SurvieEnTerreInconnue
                         " \r\n██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝      " +
                         " \r\n╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝        ");
         }
-        public static void DisplayWelcomeMessage()
-        {
-            Display.AnimateText("██████╗ ██╗███████╗███╗   ██╗██╗   ██╗███████╗███╗   ██╗██╗   ██╗███████╗               " +
-                                "\r\n██╔══██╗██║██╔════╝████╗  ██║██║   ██║██╔════╝████╗  ██║██║   ██║██╔════╝                 " +
-                                "\r\n██████╔╝██║█████╗  ██╔██╗ ██║██║   ██║█████╗  ██╔██╗ ██║██║   ██║█████╗                   " +
-                                "\r\n██╔══██╗██║██╔══╝  ██║╚██╗██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║   ██║██╔══╝                   " +
-                                "\r\n██████╔╝██║███████╗██║ ╚████║ ╚████╔╝ ███████╗██║ ╚████║╚██████╔╝███████╗                 " +
-                                "\r\n╚═════╝ ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                 " +
-                                "\r\n                                                                                          " +
-                                "\r\n██████╗  █████╗ ███╗   ██╗███████╗    ██╗     ███████╗         ██╗███████╗██╗   ██╗    ██╗" +
-                                "\r\n██╔══██╗██╔══██╗████╗  ██║██╔════╝    ██║     ██╔════╝         ██║██╔════╝██║   ██║    ██║" +
-                                "\r\n██║  ██║███████║██╔██╗ ██║███████╗    ██║     █████╗           ██║█████╗  ██║   ██║    ██║" +
-                                "\r\n██║  ██║██╔══██║██║╚██╗██║╚════██║    ██║     ██╔══╝      ██   ██║██╔══╝  ██║   ██║    ╚═╝" +
-                                "\r\n██████╔╝██║  ██║██║ ╚████║███████║    ███████╗███████╗    ╚█████╔╝███████╗╚██████╔╝    ██╗" +
-                                "\r\n╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝    ╚══════╝╚══════╝     ╚════╝ ╚══════╝ ╚═════╝     ╚═╝");
-        }
+      
         public static void DisplayGoodByeMessage()
         {
             Display.AnimateText(" █████╗ ██╗   ██╗    ██████╗ ███████╗██╗   ██╗ ██████╗ ██╗██████╗ ██╗" +
@@ -200,36 +185,42 @@ namespace SurvieEnTerreInconnue
                                 "\r\n╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝");
             Console.ResetColor();
         }
-        public static string  DisplayHouse()
+        public static void DisplayHouse()
         {
-            art = @"                                           /\
-                                      /\  //\\
-                               /\    //\\///\\\        /\
-                              //\\  ///\////\\\\  /\  //\\
-                 /\          /  ^ \/^ ^/^  ^  ^ \/^ \/  ^ \
-                / ^\    /\  / ^   /  ^/ ^ ^ ^   ^\ ^/  ^^  \
-               /^   \  / ^\/ ^ ^   ^ / ^  ^    ^  \/ ^   ^  \       *
-              /  ^ ^ \/^  ^\ ^ ^ ^   ^  ^   ^   ____  ^   ^  \     /|\
-             / ^ ^  ^ \ ^  _\___________________|  |_____^ ^  \   /||o\
-            / ^^  ^ ^ ^\  /______________________________\ ^ ^ \ /|o|||\
-           /  ^  ^^ ^ ^  /________________________________\  ^  /|||||o|\
-          /^ ^  ^ ^^  ^    ||___|___||||||||||||___|__|||      /||o||||||\
-         / ^   ^   ^    ^  ||___|___||||||||||||___|__|||          | |
-        / ^ ^ ^  ^  ^  ^   ||||||||||||||||||||||||||||||oooooooooo| |ooooooo
-        ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-                ;
-            return art;
-        }
-            /*
-            foreach (char c in texte)
-            {
-                Console.Write(c);
-                Thread.Sleep(timeLimit);
-            }
+            Console.ForegroundColor = ConsoleColor.Blue;
 
-            Console.ForegroundColor = savedColor;
-         
-            */
+            string art = @"                                    /\
+                               /\  //\\
+                        /\    //\\///\\\        /\
+                       //\\  ///\////\\\\  /\  //\\
+          /\          /  ^ \/^ ^/^  ^  ^ \/^ \/  ^ \
+         / ^\    /\  / ^   /  ^/ ^ ^ ^   ^\ ^/  ^^  \
+        /^   \  / ^\/ ^ ^   ^ / ^  ^    ^  \/ ^   ^  \       *
+       /  ^ ^ \/^  ^\ ^ ^ ^   ^  ^   ^   ____  ^   ^  \     /|\
+      / ^ ^  ^ \ ^  _\___________________|  |_____^ ^  \   /||o\
+     / ^^  ^ ^ ^\  /______________________________\ ^ ^ \ /|o|||\
+    /  ^  ^^ ^ ^  /________________________________\  ^  /|||||o|\
+   /^ ^  ^ ^^  ^    ||___|___||||||||||||___|__|||      /||o||||||\
+  / ^   ^   ^    ^  ||___|___||||||||||||___|__|||          | |
+ / ^ ^ ^  ^  ^  ^   ||||||||||||||||||||||||||||||oooooooooo| |ooooooo
+ ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+            ;
+
+            Console.WriteLine(art);
+
+            Console.ResetColor();
+
+        }
+        /*
+                  foreach (char c in texte)
+                  {
+                      Console.Write(c);
+                      Thread.Sleep(timeLimit);
+                  }
+
+                  Console.ForegroundColor = savedColor;
+
+                  */
 
         // Monsieur Kevin m'a aidé à faire ce bout de code (fonction) parce que la méthode précédente ne marchait pas très bien avec les Ascii Art,il a juste améliorer AnimateText()
         public static void AnimateText(string texte, ConsoleColor couleur = ConsoleColor.White, int timeLimit = 30)
