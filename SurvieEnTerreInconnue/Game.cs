@@ -10,6 +10,7 @@ namespace SurvieEnTerreInconnue
     {
         public const string FileName = "data.txt";
 
+        //Méthode qui sérialise les données et les transforme en format JSON (texte)
         public static void DataSerialisation()
         {
             try
@@ -43,6 +44,7 @@ namespace SurvieEnTerreInconnue
 
                 File.AppendAllText(FileName, JsonSerializer.Serialize(Map.resourceAmounts) + "\n");
                 File.AppendAllText(FileName, JsonSerializer.Serialize(Map.numberOfTripsRemaining) + "\n");
+                File.AppendAllText(FileName, JsonSerializer.Serialize(Map.isFirstGame) + "\n");
 
                 Console.Clear();
                 Display.AnimateText("Partie sauvegardée avec succès !", ConsoleColor.Green);
@@ -60,6 +62,7 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        //Méthode qui désérialize les données et les convertit dans leur types exacts
         public static void DataDeserialisation()
         {
             try
@@ -78,18 +81,18 @@ namespace SurvieEnTerreInconnue
                 Map.playerPositionY = JsonSerializer.Deserialize<int>(loaded[1]);
 
                 List<List<int>> mapGridList = JsonSerializer.Deserialize<List<List<int>>>(loaded[2]);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < Map.mapGrid.GetLength(0); i++)
                 {
-                    for (int j = 0; j < 10; j++)
+                    for (int j = 0; j < Map.mapGrid.GetLength(1); j++)
                     {
                         Map.mapGrid[i, j] = mapGridList[i][j];
                     }
                 }
 
                 List<List<bool>> discoveredList = JsonSerializer.Deserialize<List<List<bool>>>(loaded[3]);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < Map.discovered.GetLength(0); i++)
                 {
-                    for (int j = 0; j < 10; j++)
+                    for (int j = 0; j < Map.discovered.GetLength(1); j++)
                     {
                         Map.discovered[i, j] = discoveredList[i][j];
                     }
@@ -97,6 +100,7 @@ namespace SurvieEnTerreInconnue
 
                 Map.resourceAmounts = JsonSerializer.Deserialize<int[]>(loaded[4]);
                 Map.numberOfTripsRemaining = JsonSerializer.Deserialize<int>(loaded[5]);
+                Map.isFirstGame = JsonSerializer.Deserialize<bool>(loaded[6]);
 
                 Console.Clear();
                 Display.AnimateText("Partie chargée avec succès !");

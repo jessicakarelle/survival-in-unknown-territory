@@ -10,8 +10,7 @@ namespace SurvieEnTerreInconnue
 {
     internal class Menu
     {
-        public static List<string> saveList = new List<string>();
-        // Méthode qui affiche le menu principal du jeu
+        //Méthode qui affiche le menu principal
         public static ConsoleKey DisplayMenu()
         {
             Console.Clear();
@@ -29,7 +28,8 @@ namespace SurvieEnTerreInconnue
             ConsoleKeyInfo selectedAction = Console.ReadKey();
             return selectedAction.Key;
         }
-        // La méthode traite les choix qui on été effectuer par l'utilisateur dans la méthode qui précède
+
+        // La méthode traite les choix qui on été effectuer par l'utilisateur dans la méthode DisplayMenu
         public static void ProcessDisplayMenuInput()
         {
             bool continueGame = true;
@@ -41,8 +41,7 @@ namespace SurvieEnTerreInconnue
                 switch (input)
                 {
                     case ConsoleKey.D:
-                        Map.GenerateMap();
-                        Map.ShowTerrainAtCurrentPosition();
+                        StartNewGame();
                         Thread.Sleep(1000);
                         break;
 
@@ -67,12 +66,38 @@ namespace SurvieEnTerreInconnue
 
                     default:
                         Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Thread.Sleep(1500);
+                        Display.AnimateText("Choix invalide. Veuillez réessayer.", Console.ForegroundColor = ConsoleColor.DarkRed);
+                        Console.ResetColor();
+                        Thread.Sleep(1000);
                         break;
                 }
             }
         }
+        //Méthode qui va commencer un nouveau jeu,et demander aux joueur si il souhaite revoir la mise en contexte du jeu
+        public static void StartNewGame()
+        {
+            Map.ResetGame();  
+
+            if (!Map.isFirstGame)
+            {
+                Console.Clear();
+                Display.AnimateText("\nVoulez-vous revoir la mise en contexte de l'histoire ? (O/N) : ", ConsoleColor.White, 30);
+                ConsoleKeyInfo key = Console.ReadKey();
+
+                if (key.Key == ConsoleKey.O)
+                {
+                    DisplayGameHistory();
+                }
+            }
+            else
+            {
+               DisplayGameHistory();
+                Map.isFirstGame = false;
+            }
+
+            Map.ShowTerrainAtCurrentPosition();  
+        }
+
         // Méthode qui affiche les crédits du jeu
         public static void DisplayProgrammersCredits()
         {
@@ -97,7 +122,8 @@ namespace SurvieEnTerreInconnue
             ConsoleKeyInfo selectedAction = Console.ReadKey();
             return selectedAction.Key;
         }
-        // Cette méthode va traiter le choix par rapport à ce qu'il aura choisi dans la méthode précédente
+
+        //méthode qui va traiter le choix par rapport à ce qu'il aura choisi dans la méthode précédente
         public static bool ProcessDisplayLeaveMessageInput()
         {
             ConsoleKey input = DisplayLeaveMessage();
@@ -114,6 +140,8 @@ namespace SurvieEnTerreInconnue
                     return true;
 
                 case ConsoleKey.S:
+                    Game.DataSerialisation();
+                    DisplayGoodByeMessage();
                     return false;
 
                 default:
@@ -124,36 +152,46 @@ namespace SurvieEnTerreInconnue
             }
         }
 
-        // Si l'utilisateur a choisi "oui, je souhaite quitter la partie", on lui affiche un beau message d'aurevoir 
+        //Méthode qui affiche le message d'aurevoir à l'utilisateur
         public static void DisplayGoodByeMessage()
         {
+            Console.Clear();
             Display.AnimateText("Vous avez ainsi fait votre choix, nous espérons que le jeu vous aura plu.");
             Display.AnimateText("\n\nNous espérons vous revoir bientôt !");
             Console.WriteLine();
             Thread.Sleep(3000);
             Environment.Exit(0);
         }
-        // Cette méthode  permet de mettre en contexte le jeu, pour que l'utilisateur comprenne de quoi il s'agit dans ce jeu 
+
+        //Méthode qui affiche l'histoire du jeu (une mise en contexte du jeu)
         public static void DisplayGameHistory()
         {
-            Display.AnimateText("\t\t\t\tMise en contexte de l'histoire ...\t");
-            Display.AnimateText("\n\tVous êtes le seul survivant à un crash d'avion");
-            Thread.Sleep(500);
-            Display.AnimateText("\n\tVous êtes sur une île abandonnée, aucun signe de vie aux alentours");
-            Thread.Sleep(500);
-            Display.AnimateText("\n\tL'hiver approche ...");
-            Console.WriteLine();
-            Thread.Sleep(500);
-            Display.AnimateText("\n\tConstruisez-vous un abri au plus vite si vous souhaitez survivre ...");
+            Console.Clear();
+            Display.AnimateText("\t\t\t\tMise en contexte de l'histoire ...\t", Console.ForegroundColor = ConsoleColor.White, 40);
+            Thread.Sleep(800);
+            Display.AnimateText("\n\tVous êtes le seul survivant à un crash d'avion", Console.ForegroundColor = ConsoleColor.White, 35);
+            Thread.Sleep(1200);
+            Display.DisplayPlaneCrash();
+            Thread.Sleep(2500);
+            Console.Clear();
+            Display.AnimateText("\n\tVous êtes sur une île abandonnée, aucun signe de vie aux alentours", Console.ForegroundColor = ConsoleColor.White, 35);
+            Thread.Sleep(1000);
+            Display.StartGameIsland();
+            Thread.Sleep(2000);
+            Console.Clear();
+            Display.AnimateText("\n\tL'hiver approche ...", Console.ForegroundColor = ConsoleColor.White, 30);
+            Thread.Sleep(1200);
+            Display.AnimateText("\n\tConstruisez-vous un abri au plus vite si vous souhaitez survivre ...", Console.ForegroundColor = ConsoleColor.White, 35);
         }
-        // Cette méthode (même si c'est peu probable qu'un joueur arrive à la fin du jeu) affichera le message de victoire du jeu
+
+        //Message qui s'affiche lorsque l'utilisateur réussi à construire une maison
         public static void DisplayEndMessage()
         {
             Display.DisplayHouse(); 
             Console.WriteLine("\nVous avez reussi à vous construire une maison  qui vous protègera du froid hivernal. Nous vous souhaitons bon courage pour la suite !");
         }
        
-        // Cette méthode affiche le menu de fabrication du jeu
+        //Méthode qui affiche le menu de fabrication
         public static ConsoleKey DisplayManufacturingMenu()
         {
             Console.Clear();
@@ -180,7 +218,8 @@ namespace SurvieEnTerreInconnue
             ConsoleKeyInfo selectedAction = Console.ReadKey();
             return selectedAction.Key;
         }
-        // Cette méthode va traiter les choix effectuer dans la méthode d'affiche du menu de fabrication
+
+        //Méthode qui traite les choix effectuer par l'utilisateur dans le menu de fabrication
         public static bool ProcessDisplayManufacturingInput()
         {
             bool continueManufacturing = true;
@@ -267,7 +306,8 @@ namespace SurvieEnTerreInconnue
 
             return true;
         }
-        // Cette méthode affiche le menu d'inventaire principal
+
+        //Méthode qui affiche le menu d'inventaire principal
         public static ConsoleKey DisplayInventoryPrincipalMenu()
         {
             Console.Clear();
@@ -285,7 +325,8 @@ namespace SurvieEnTerreInconnue
             ConsoleKeyInfo selectedAction = Console.ReadKey();
             return selectedAction.Key;
         }
-        // Cette méthode va traiter les choix effectuer dans la méthode précédente
+
+        //Méthode qui va traiter kes choix effectuer dans la méthode précédente
         public static void ProcessInventoryInput()
         {
             bool continueInventory = true;
@@ -326,7 +367,8 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-        // Si l'utilisateur a choisi R, on va afficher son inventaire de ressources
+
+        //Méthode qui affiche le premier menu d'inventaire (ressources)
         public static void DisplayInventoryMenu1()
         {
             Console.Clear();
@@ -345,7 +387,7 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine($"\t\t{"Poisson".PadRight(20)}: {Map.resourceAmounts[16]}");
             Console.WriteLine("\t\t*****************************************************");
         }
-        //Si l'utilisateur a choisi M, on va afficher son inventaire de matériaux
+        //Méthode qui affiche le deuxième menu d'inventaire (matériaux)
         public static void DisplayInventoryMenu2()
         {
             Console.Clear();

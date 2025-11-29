@@ -23,6 +23,7 @@
             //Display.DisplayForest();
             //Map.DisplayDirection();
             //Display.DisplayPlaneCrash();
+            //Menu.DisplayGameHistory();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace SurvieEnTerreInconnue
 {
     internal class Map
     {
+        public static bool isFirstGame = true;
         public static int playerPositionX = 0;
         public static int playerPositionY = 0;
         public static int[,] mapGrid = new int[10, 10];
@@ -17,7 +18,7 @@ namespace SurvieEnTerreInconnue
         public static Random randomGenerator = new Random();
         public static string[] resourceNames = {"Fer", "Bois", "Silex", "Argile", "Herbes", "Sable",
                                 "Feu", "Haches", "Vitre", "Planche", "Briques", "Isolants", "Maisons", "Fruits", "Eau" , "Gibier", "Poisson" };
-        public static int numberOfTripsRemaining = 10;
+        public static int numberOfTripsRemaining = 200;
 
         //resourceNames[0] = Fer
         //resourceNames[1] = Bois
@@ -38,6 +39,8 @@ namespace SurvieEnTerreInconnue
         //resourceNames[16] = Poisson
 
         public static int[] resourceAmounts = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+        //Méthode qui compte le nombre de voyages restants 
         public static bool ManageNumberOfTrip()
         {
             numberOfTripsRemaining--;
@@ -57,7 +60,7 @@ namespace SurvieEnTerreInconnue
                     if (i == 0 && j == 0)
                     {
                         mapGrid[i, j] = 0; //Base
-                        discovered[i, j] = true; //La base est deja découverte quand le jeu commençe
+                        discovered[i, j] = true; 
                     }
                     else
                     {
@@ -66,7 +69,7 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-        // Cette méthode affiche la grille du jeu, si on est à la position du joueur on affiche son symbole sinon si on mets la couleur attribuer à chaque terrain, sinon on affiche le terrain en noir (vide)
+        //Méthode affichant la grille du jeu
         public static void DisplayGridMap()
         {
             Console.Clear();
@@ -100,7 +103,40 @@ namespace SurvieEnTerreInconnue
                 Console.WriteLine();
             }
         }
-        // On va attribuer à chaque terrain une couleur symbolique qui permettra de facilement l'identifier, par exemple la forêt c'est le vert
+        //Méthode qui va rétablir toutes les données du joueur à zéro
+        public static void ResetGame()
+        {
+            playerPositionX = 0;
+            playerPositionY = 0;
+
+            numberOfTripsRemaining = 200;
+
+            for (int i = 0; i < resourceAmounts.Length; i++)
+            {
+                resourceAmounts[i] = 0;
+            }
+
+            for (int i = 0; i < discovered.GetLength(0); i++)
+            {
+                for (int j = 0; j < discovered.GetLength(1); j++)
+                {
+                    discovered[i, j] = false;
+                }
+            }
+
+            discovered[0, 0] = true;
+
+            GenerateMap();
+
+        }
+
+        public static void StartNewGame()
+        {
+            Map.ResetGame();
+
+        }
+
+        //Méthode qui attribue une couleur à un terrain spécifique
         public static void SetTerrainColor(int terrain)
         {
             switch (terrain)
@@ -131,7 +167,8 @@ namespace SurvieEnTerreInconnue
                     break;
             }
         }
-        // Cette fonction va collecter le matériel selon les probabilités de chance de collecte de chaque ressource (voir les probabilités de chaque terrain en dessous de cette méthode) 
+
+        //Méthode qui collecte les matériaux de chaque terrain en fonction de leurs probabilités
         public static void CollectMaterials()
         {
             string terrain = GetCurrentTerrain();
@@ -170,7 +207,7 @@ namespace SurvieEnTerreInconnue
                     break;
             }
         }
-        // Probabilité  de découverte des ressources dans le désert
+        //Probabilité de collecte de ressources dans le désert
         public static void ProbabilityDiscoveryInDesert()
         {
             int roll = randomGenerator.Next(0, 100);
@@ -190,7 +227,8 @@ namespace SurvieEnTerreInconnue
                 Console.WriteLine("Vous n'avez rien trouvé...");
             }
         }
-        // Probabilité  de découverte des ressources dans la forêt
+
+        //Probabilité de collecte de ressources dans la forêt
         public static void ProbabilityDiscoveryInForest()
         {
             int roll = randomGenerator.Next(0, 100);
@@ -221,7 +259,8 @@ namespace SurvieEnTerreInconnue
                 resourceAmounts[1]++;
             }
         }
-        // Probabilité  de découverte des ressources dans le marais
+
+        //Probabilité de collecte de ressources dans le marais
         public static void ProbabilityDiscoveryInSwamp()
         {
             int roll = randomGenerator.Next(0, 100);
@@ -242,7 +281,8 @@ namespace SurvieEnTerreInconnue
                 resourceAmounts[14]++; 
             }
         }
-        // Probabilité  de découverte des ressources dans la rivière
+
+        //Probabilité de collecte de ressources dans la rivière
         public static void ProbabilityDiscoveryInRiver()
         {
             int roll = randomGenerator.Next(0, 100);
@@ -263,7 +303,8 @@ namespace SurvieEnTerreInconnue
                 resourceAmounts[2]++; 
             }
         }
-        // Probabilité  de découverte des ressources dans la prairie
+
+        //Probabilité de collecte de ressources dans la prairie
         public static void ProbabilityDiscoveryInPrairie()
         {
             int roll = randomGenerator.Next(0, 100);
@@ -279,7 +320,8 @@ namespace SurvieEnTerreInconnue
                 resourceAmounts[4]++; 
             }
         }
-        // Probabilité  de découverte des ressources dans la montagne
+
+        //Probabilité de collecte de ressources dans la montagne
         public static void ProbabilityDiscoveryInMountain()
         {
             int roll = randomGenerator.Next(0, 100);
@@ -300,7 +342,8 @@ namespace SurvieEnTerreInconnue
                 resourceAmounts[0]++; 
             }
         }
-        // Cette méthode trouve le terrain en fonction de la génération aléatoire d'un nombre (voir début de la class)
+
+       //Méthode qui attribue un terrain à une position de manière aléatoire
         public static string GetCurrentTerrain()
         {
             int terrain = mapGrid[playerPositionY, playerPositionX];
@@ -325,7 +368,8 @@ namespace SurvieEnTerreInconnue
                     return "";
             }
         }
-        // Cette méthode affiche le terrain en fonction de la position du joueur
+      
+        //Méthode qui va afficher le terrain en fonction de la position du joueur
         public static void ShowTerrainAtCurrentPosition()
         {
             discovered[playerPositionY, playerPositionX] = true;
@@ -357,6 +401,7 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        //Méthode qui va afficher le menu de chaque terrain
         public static ConsoleKey DisplayTerrainMenu(string terrainName)
         {
             Console.ResetColor();
@@ -377,6 +422,7 @@ namespace SurvieEnTerreInconnue
             ConsoleKeyInfo selectedAction = Console.ReadKey();
             return selectedAction.Key;
         }
+        //Méthode qui affiche la forêt 
         public static ConsoleKey DisplayForest()
         {
             Console.Clear();
@@ -391,6 +437,7 @@ namespace SurvieEnTerreInconnue
             return DisplayTerrainMenu("dans la forêt");
         }
 
+        //Méthode qui affiche la prairie
         public static ConsoleKey DisplayPrairie()
         {
             Console.Clear();
@@ -405,6 +452,7 @@ namespace SurvieEnTerreInconnue
             return DisplayTerrainMenu("dans la prairie");
         }
 
+        //Méthode qui affiche le désert
         public static ConsoleKey DisplayDesert()
         {
             Console.Clear();
@@ -419,6 +467,7 @@ namespace SurvieEnTerreInconnue
             return DisplayTerrainMenu("dans le désert");
         }
 
+        //Méthode qui affiche la rivière
         public static ConsoleKey DisplayRiver()
         {
             Console.Clear();
@@ -431,7 +480,9 @@ namespace SurvieEnTerreInconnue
 
             Display.DisplayRiver();
             return DisplayTerrainMenu("près de la rivière");
-        } 
+        }
+
+        //Méthode qui affiche le marais
         public static ConsoleKey DisplaySwamp()
         {
             Console.Clear();
@@ -446,6 +497,7 @@ namespace SurvieEnTerreInconnue
             return DisplayTerrainMenu("dans le marais");
         }
 
+        //Méthode qui affiche la montagne
         public static ConsoleKey DisplayMountain()
         {
             Console.Clear();
@@ -459,7 +511,7 @@ namespace SurvieEnTerreInconnue
             Display.DisplayMountain();
             return DisplayTerrainMenu("dans la montagne");
         }
-
+        //Méthode qui affiche le terrain de base, ainsi que son mene
         public static ConsoleKey DisplayBase()
         {
             Console.Clear();
@@ -481,6 +533,7 @@ namespace SurvieEnTerreInconnue
             return selectedAction.Key;
         }
 
+        //Méthode qui va traiter les choix effectuer par l'utilisateur dans le terrain de base
         public static bool ProcessDisplayBaseInput()
         {
             Console.ResetColor();
@@ -526,6 +579,7 @@ namespace SurvieEnTerreInconnue
             return true;
         }
 
+        //Méthode qui affiche la carte, ainsi que les différents directions pour explorer la carte et quelques informations de bases ( position du joueur, terrain actuel et nombres de voyages restants)
         public static ConsoleKey DisplayDirection()
         {
 
@@ -553,6 +607,7 @@ namespace SurvieEnTerreInconnue
             return selectedAction.Key;
         }
 
+        //Méthode qui va afficher les limites de chaque coté de la carte
         public static void ShowBoundaryMessage(string direction)
         {
             string article;
@@ -569,6 +624,8 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
             Thread.Sleep(500);
         }
+
+        //Méthode qui traite les choix effectuer par l'utilisateur dans le DisplayDirection
         public static void ProcessExplorationInput()
         {
             bool exploring = true;
@@ -665,19 +722,18 @@ namespace SurvieEnTerreInconnue
         }
 
        
-        //on aurait pu faire cette méthode pour chaque terrain mais ça aurait été trop long dans notre code, j'ai trouvé comment passer une méthode en paramètre sur Stackoverflow pour optimiser notre code
-        //On va passer en paramètre chaque méthode pour ne pas à avoir les mêmes choses pour chaque terrain, cette méthode va retourner l'action que l'utilisateur choisira
+        //Méthode qui passe en paramètre une méthode  du type DisplayTerrain (par exemple DisplayForest) et qui traite les choix effectuer par l'utilisateur dans chaque terrain
         public static bool ProcessTerrainInput(Func<ConsoleKey> displayFunction)
         {
             bool stayInTerrain = true;
 
             while (stayInTerrain)
             {
-                //input sera la consoleKey qui sera retourner par chaque méthode par exemple dans le DisplayForest
+                
                 ConsoleKey input = displayFunction();
                 Console.WriteLine();
 
-                //En codant, je me suis rendu compte que ce menu était le même pour tout les terrains
+               
                 switch (input)
                 {
                     case ConsoleKey.E:
@@ -714,7 +770,7 @@ namespace SurvieEnTerreInconnue
 
             return true;
         }
-        //Ces méthodes vont retourner le choix de l'utilisateur
+        //Ces méthodes retournent le choix de l'utilsateur en fonction de ProcessTerrainInput 
         public static bool ProcessDisplayForestInput()
         {
             return ProcessTerrainInput(DisplayForest);

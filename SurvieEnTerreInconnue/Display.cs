@@ -32,6 +32,19 @@ namespace SurvieEnTerreInconnue
 
             Console.ReadKey();
         }
+        public static void StartGameIsland()
+        {
+            Console.WriteLine("                                                    ____" +
+                "\r\n                                         v        _(    )" +
+                "\r\n        _ ^ _                          v         (___(__)" +
+                "\r\n       '_\\V/ `\r\n       ' oX`\r\n          X                            v" +
+                "\r\n          X             -HELP!\r\n          X                                                 ." +
+                "\r\n          X        \\O/                                      |" +
+                "\\\r\n          X.a##a.   M                                       |_" +
+                "\\\r\n       .aa########a.>>                                    __|__" +
+                "\r\n    .a################aa.                                 \\   /" +
+                "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        }
         public static void DisplayPrincipalMenu()
         {
             Console.Clear();
@@ -339,6 +352,17 @@ namespace SurvieEnTerreInconnue
                 "\r\n           ''''''-|---|--/    \\==][^',_m_,'^][==/    \\--|---|-''''''" +
                 "\r\n                         \\    /  ||/   H   \\||  \\    /" +
                 "\r\n                          '--'   OO   O|O   OO   '--'");
+        }
+        public static void DisplaySnowFall()
+        {
+            Console.WriteLine(".      *    *           *.       *   .                      *     ." +
+                "\r\n               .   .                   __   *    .     * .     *" +
+                "\r\n    *       *         *   .     .    _|__|_        *    __   .       *" +
+                "\r\n  .  *  /\\       /\\          *        ('')    *       _|__|_     ." +
+                "\r\n       /  \\   * /  \\  *          .  <( . )> *  .       ('')   *   *" +
+                "\r\n  *    /  \\     /  \\   .   *       _(__.__)_  _   ,--<(  . )>  .    ." +
+                "\r\n      /    \\   /    \\          *   |       |  )),`   (   .  )     *" +
+                "\r\n   *   `||` ..  `||`   . *.   ... ==========='`   ... '--`-` ... * jb .");
         }
     }
 }
