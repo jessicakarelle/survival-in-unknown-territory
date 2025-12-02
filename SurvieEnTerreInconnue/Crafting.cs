@@ -8,7 +8,6 @@ namespace SurvieEnTerreInconnue
     {
         public static void HintWhereToFind(int index)
         {
-            
             Console.ForegroundColor = ConsoleColor.Cyan;
             switch (index)
             {
@@ -45,7 +44,6 @@ namespace SurvieEnTerreInconnue
             }
 
             Console.ResetColor();
-
         }
         public static void BuildHouse()
         {
@@ -269,6 +267,7 @@ namespace SurvieEnTerreInconnue
                 Map.resourceAmounts[16]--; 
                 Map.resourceAmounts[6]--; 
                 Map.playerEnergy += 30;
+                MaxPlayerEnergy();
             }
             else
             {
@@ -288,6 +287,7 @@ namespace SurvieEnTerreInconnue
                 Map.resourceAmounts[15]--; 
                 Map.resourceAmounts[6]--;  
                 Map.playerEnergy += 50;
+                MaxPlayerEnergy();
             }
 
             else

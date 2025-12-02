@@ -81,54 +81,6 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-        /*
-        //Méthode affichant la grille du jeu
-        public static void DisplayGridMap()
-        {
-            Console.Clear();
-            Console.OutputEncoding = Encoding.UTF8;
-
-            //Boucles pour les lignes (y)
-            for (int i = 0; i < mapGrid.GetLength(0); i++)
-            {
-                // Boucles pour les colonnes (x)
-                for (int j = 0; j < mapGrid.GetLength(1); j++)
-                {
-                    // Si position du joueur
-                    if (playerPositionX == j && playerPositionY == i)
-                    {
-                        int terrain = mapGrid[i, j];
-                        SetTerrainColor(terrain);
-
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write("  👤  ");    
-                        Console.ResetColor();
-                    }
-                    //Sinon si découvert
-                    else if (discovered[i, j])
-                    {
-                        int terrain = mapGrid[i, j];
-                        SetTerrainColor(terrain);
-
-                        Console.Write("  ");
-                        SetTerrainEmoji(terrain);
-                        Console.Write("  ");
-
-                        Console.ResetColor();
-                    }
-                    // Sinon case noire
-                    else
-                    {
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.Write("      ");      
-                        Console.ResetColor();
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-        */
-
         public static void DisplayGridMap()
         {
             Console.Clear();
@@ -347,7 +299,7 @@ namespace SurvieEnTerreInconnue
                 else
                 {
                     
-                    Console.WriteLine("Vous avez collecté des fruits 🪵");
+                    Console.WriteLine("Vous avez collecté des fruits 🍇");
                     resourceAmounts[13]++; 
                 }
             }
@@ -417,7 +369,7 @@ namespace SurvieEnTerreInconnue
 
             if (roll < 30) 
             {
-                Console.WriteLine("Vous avez collecté des fruits 🪵");
+                Console.WriteLine("Vous avez collecté des fruits 🍇");
                 resourceAmounts[13]++;
             }
             else 
@@ -551,13 +503,6 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Display.DisplayPrairiePosition();
-            /*
-            for (int i = 0; i < 3; i++)
-            {
-                Console.WriteLine();
-            }
-
-            Display.DisplayPrairie();*/
             return DisplayTerrainMenu("dans la prairie");
         }
 
@@ -650,7 +595,6 @@ namespace SurvieEnTerreInconnue
                         return false;
 
                     default:
-                        Console.Clear();
                         Display.AnimateText("Choix invalide. Veuillez réessayer.");
                         Thread.Sleep(500);
                         break;
@@ -792,7 +736,6 @@ namespace SurvieEnTerreInconnue
                         break;
 
                     default:
-                        Console.Clear();
                         Display.AnimateText("Direction invalide. Veuillez réessayer.");
                         Thread.Sleep(1500);
                         break;
@@ -848,7 +791,6 @@ namespace SurvieEnTerreInconnue
                         return false;
 
                     default:
-                        Console.Clear();
                         Display.AnimateText("Choix invalide. Veuillez réessayer.");
                         Thread.Sleep(500);
                         break;

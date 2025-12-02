@@ -41,11 +41,9 @@ namespace SurvieEnTerreInconnue
                     discoveredList.Add(row);
                 }
                 File.AppendAllText(FileName, JsonSerializer.Serialize(discoveredList) + "\n");
-
                 File.AppendAllText(FileName, JsonSerializer.Serialize(Map.resourceAmounts) + "\n");
                 File.AppendAllText(FileName, JsonSerializer.Serialize(Map.numberOfTripsRemaining) + "\n");
                 File.AppendAllText(FileName, JsonSerializer.Serialize(Map.playerEnergy) + "\n");
-
                 Console.Clear();
                 Console.WriteLine("Sauvegarde de la partie effectué avec succès");
                 Console.WriteLine("\nAppuyez sur une touche pour continuer...");
@@ -73,7 +71,6 @@ namespace SurvieEnTerreInconnue
                     Console.ReadKey();
                     return;
                 }
-
                 string[] loaded = File.ReadAllLines(FileName);
                 Map.playerPositionX = JsonSerializer.Deserialize<int>(loaded[0]);
                 Map.playerPositionY = JsonSerializer.Deserialize<int>(loaded[1]);
@@ -86,7 +83,6 @@ namespace SurvieEnTerreInconnue
                         Map.mapGrid[i, j] = mapGridList[i][j];
                     }
                 }
-
                 List<List<bool>> discoveredList = JsonSerializer.Deserialize<List<List<bool>>>(loaded[3]);
                 for (int i = 0; i < Map.discovered.GetLength(0); i++)
                 {

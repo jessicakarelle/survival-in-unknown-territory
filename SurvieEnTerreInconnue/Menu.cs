@@ -14,7 +14,7 @@ namespace SurvieEnTerreInconnue
 {
     internal class Menu
     {
-        public static bool isFirstGame = true;
+        public static bool hasStartedGame = false;
         // Méthode qui affiche un message et attend que l'utilisateur appuie sur une touche
         public static void WaitForKeyPress(string message = "\nAppuyez sur une touche pour continuer...")
         {
@@ -33,8 +33,10 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine("[C]hargé une partie");
             Console.WriteLine("[S]auvegarder une partie");
             Console.WriteLine("[A]uteurs");
-            Console.WriteLine("[R]ègles du jeu");
-            Console.WriteLine("[M]ise en contexte");
+            if (hasStartedGame)
+            {
+                Console.WriteLine("[Enter]Retourner au terrain actuel");
+            }
             Console.WriteLine("[Q]uitter");
 
             Console.WriteLine();
@@ -56,12 +58,15 @@ namespace SurvieEnTerreInconnue
                 switch (input)
                 {
                     case ConsoleKey.D:
+                            hasStartedGame = true;
+                            DisplayGameHistory();
                             Map.ResetGame();
                             Map.ShowTerrainAtCurrentPosition();
                             Thread.Sleep(1000);
                             break;
 
                     case ConsoleKey.C:
+                        hasStartedGame = true;
                         Game.DataDeserialisation();
                         break;
 
@@ -75,77 +80,32 @@ namespace SurvieEnTerreInconnue
                         WaitForKeyPress("\n\nAppuyez sur une touche pour retourner au menu...");
                         break;
 
-                    case ConsoleKey.R:
-                        DisplayGameRules();
-                        WaitForKeyPress("\nAppuyez sur une touche pour retourner au menu principal...");
-                        break;
-
-                    case ConsoleKey.M:
-                        DisplayGameHistory();
-                        WaitForKeyPress("\nAppuyez sur une touche pour retourner au menu principal...");
-                        break;
-
                     case ConsoleKey.Q:
                         continueGame = ProcessDisplayLeaveMessageInput();
                         break;
+
                     case ConsoleKey.Enter:
-                        Map.ShowTerrainAtCurrentPosition();
-                        Thread.Sleep(1000);
-                        break;
+                        if(hasStartedGame)
+                        {
+                            Map.ShowTerrainAtCurrentPosition();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("Veuillez commencer une partie avant de pouvoir la continuer");
+                            Console.ResetColor();
+                            WaitForKeyPress("\nAppuyez sur une touche pour retourner au menu principal");
+                        }
+                            break;
 
                     default:
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.", Console.ForegroundColor = ConsoleColor.DarkRed);
+                        Display.AnimateText("\nChoix invalide. Veuillez réessayer.");
                         Console.ResetColor();
                         Thread.Sleep(1000);
                         break;
                 }
             }
         }
-        /*
-          switch (input)
-                {
-                    case ConsoleKey.D:
-                        
-                        Map.ResetGame();
-                        Map.ShowTerrainAtCurrentPosition();
-                        Thread.Sleep(1000);
-                        break;
-
-                    case ConsoleKey.C:
-                        Game.DataDeserialisation();
-                        break;
-
-                    case ConsoleKey.S:
-                        Game.DataSerialisation();
-                        break;
-
-                    case ConsoleKey.A:
-                        Console.Clear();
-                        DisplayProgrammersCredits();
-                        WaitForKeyPress("\n\nAppuyez sur une touche pour retourner au menu...");
-                        break;
-
-                    case ConsoleKey.R:
-                        DisplayGameRules();
-                        WaitForKeyPress("\nAppuyez sur une touche pour retourner au menu principal...");
-                        break;
-
-                    case ConsoleKey.M:
-                        DisplayGameHistory();
-                        WaitForKeyPress("\nAppuyez sur une touche pour retourner au menu principal...");
-                        break;
-
-                    case ConsoleKey.Q:
-                        continueGame = ProcessDisplayLeaveMessageInput();
-                        break;
-
-                    default:
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.", Console.ForegroundColor = ConsoleColor.DarkRed);
-                        Console.ResetColor();
-                        Thread.Sleep(1000);
-                        break;
-                }
-         */
         // Méthode qui affiche les crédits du jeu
         public static void DisplayProgrammersCredits()
         {
@@ -221,13 +181,15 @@ namespace SurvieEnTerreInconnue
             Console.ReadKey();
         }
         //Méthode qui affiche l'histoire du jeu (une mise en contexte du jeu)
+   
         public static void DisplayGameHistory()
         {
             Console.Clear();
-            Display.DisplayPlaneCrash();
-            Display.AnimateText("");
+            Display.AnimateText("Vous vous réveillez après un crash d'avion ...");
+            Thread.Sleep(100);
+            Display.AnimateText("\nL'hiver approche ... Construisez vous un abris avant qu'il ene soit trop tard ...");
+            Thread.Sleep(900);
         }
-
         //Message qui s'affiche lorsque l'utilisateur réussi à construire une maison
         public static void DisplayEndMessage()
         {

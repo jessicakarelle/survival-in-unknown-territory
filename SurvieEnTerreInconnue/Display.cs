@@ -12,10 +12,9 @@ namespace SurvieEnTerreInconnue
     {
         public static void DisplayGameTitle()
         {
+            Console.Clear();
             Console.WriteLine();
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Display.AnimateText("███████╗██╗   ██╗██████╗ ██╗   ██╗██╗███████╗    ███████╗███╗   ██╗    ████████╗███████╗██████╗ ██████╗ ███████╗" +
+            Console.WriteLine("███████╗██╗   ██╗██████╗ ██╗   ██╗██╗███████╗    ███████╗███╗   ██╗    ████████╗███████╗██████╗ ██████╗ ███████╗" +
                                 "\r\n██╔════╝██║   ██║██╔══██╗██║   ██║██║██╔════╝    ██╔════╝████╗  ██║    ╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔════╝" +
                                 "\r\n███████╗██║   ██║██████╔╝██║   ██║██║█████╗      █████╗  ██╔██╗ ██║       ██║   █████╗  ██████╔╝██████╔╝█████╗ " +
                                 " \r\n╚════██║██║   ██║██╔══██╗╚██╗ ██╔╝██║██╔══╝      ██╔══╝  ██║╚██╗██║       ██║   ██╔══╝  ██╔══██╗██╔══██╗██╔══╝  " +
@@ -26,7 +25,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n██║██╔██╗ ██║██║     ██║   ██║██╔██╗ ██║██╔██╗ ██║██║   ██║█████╗                                               " +
                                 "\r\n██║██║╚██╗██║██║     ██║   ██║██║╚██╗██║██║╚██╗██║██║   ██║██╔══╝                                               " +
                                 "\r\n██║██║ ╚████║╚██████╗╚██████╔╝██║ ╚████║██║ ╚████║╚██████╔╝███████╗                                             " +
-                                "\r\n╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                             ", ConsoleColor.White, 1);
+                                "\r\n╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                             ");
             Console.WriteLine();
             Console.ResetColor();
             Console.WriteLine("\n\nAppuyez sur touche pour commençer le jeu....");
@@ -217,7 +216,6 @@ namespace SurvieEnTerreInconnue
         }
         public static void DisplayHouse()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
 
             string art = @"                                    /\
                                /\  //\\

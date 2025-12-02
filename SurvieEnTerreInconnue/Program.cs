@@ -18,6 +18,7 @@
             //Menu.ProcessInventoryInput();
             //Menu.ProcessDisplayManufacturingInput();
             //Menu.DisplayEndMessage();
+            Display.DisplayGameTitle();
             Menu.ProcessDisplayMenuInput();
             //Display.DisplayMountain();
             //Display.DisplayForest();
