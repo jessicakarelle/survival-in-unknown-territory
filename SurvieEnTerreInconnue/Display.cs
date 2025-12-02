@@ -10,6 +10,9 @@ namespace SurvieEnTerreInconnue
 {
     internal class Display
     {
+        /// <summary>
+        ///Méthode qui affiche le titre du jeu
+        /// </summary>
         public static void DisplayGameTitle()
         {
             Console.Clear();
@@ -32,19 +35,10 @@ namespace SurvieEnTerreInconnue
 
             Console.ReadKey();
         }
-        public static void StartGameIsland()
-        {
-            Console.WriteLine("                                                    ____" +
-                "\r\n                                         v        _(    )" +
-                "\r\n        _ ^ _                          v         (___(__)" +
-                "\r\n       '_\\V/ `\r\n       ' oX`\r\n          X                            v" +
-                "\r\n          X             -HELP!\r\n          X                                                 ." +
-                "\r\n          X        \\O/                                      |" +
-                "\\\r\n          X.a##a.   M                                       |_" +
-                "\\\r\n       .aa########a.>>                                    __|__" +
-                "\r\n    .a################aa.                                 \\   /" +
-                "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        }
+
+        /// <summary>
+        ///Méthode qui affiche "Menu"
+        /// </summary>
         public static void DisplayPrincipalMenu()
         {
             Console.Clear();
@@ -56,16 +50,9 @@ namespace SurvieEnTerreInconnue
                         " \r\n╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝        ");
         }
 
-        public static void DisplayGoodByeMessage()
-        {
-            Console.Clear();
-            Display.AnimateText(" █████╗ ██╗   ██╗    ██████╗ ███████╗██╗   ██╗ ██████╗ ██╗██████╗ ██╗" +
-                                "\r\n██╔══██╗██║   ██║    ██╔══██╗██╔════╝██║   ██║██╔═══██╗██║██╔══██╗██║" +
-                                "\r\n███████║██║   ██║    ██████╔╝█████╗  ██║   ██║██║   ██║██║██████╔╝██║" +
-                                "\r\n██╔══██║██║   ██║    ██╔══██╗██╔══╝  ╚██╗ ██╔╝██║   ██║██║██╔══██╗╚═╝" +
-                                "\r\n██║  ██║╚██████╔╝    ██║  ██║███████╗ ╚████╔╝ ╚██████╔╝██║██║  ██║██╗" +
-                                "\r\n╚═╝  ╚═╝ ╚═════╝     ╚═╝  ╚═╝╚══════╝  ╚═══╝   ╚═════╝ ╚═╝╚═╝  ╚═╝╚═╝");
-        }
+        /// <summary>
+        ///Méthode qui affiche "Crédit"
+        /// </summary>
         public static void DisplayCreditMessage()
         {
             Console.Clear();
@@ -76,7 +63,10 @@ namespace SurvieEnTerreInconnue
                             "\r\n╚██████╗██║  ██║███████╗██████╔╝██║   ██║          " +
                             "\r\n ╚═════╝╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝   ╚═╝          ");
         }
-        //Afficher la position de base 
+
+        /// <summary>
+        ///Méthode qui affiche "Base"
+        /// </summary>
         public static void DisplayBasePosition()
         {
             Console.Clear();
@@ -89,7 +79,9 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
         }
 
-        //Afficher la position dans le désert
+        /// <summary>
+        ///Méthode qui affiche "Désert"
+        /// </summary>
         public static void DisplayDesertPosition()
         {
             Console.Clear();
@@ -103,7 +95,9 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
         }
 
-        //Afficher la position dans la rivière
+        /// <summary>
+        ///Méthode qui affiche "Rivière"
+        /// </summary>
         public static void DisplayRiverPosition()
         {
             Console.Clear();
@@ -117,6 +111,9 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
         }
 
+        /// <summary>
+        ///Méthode qui affiche "Prairie"
+        /// </summary>
         public static void DisplayPrairiePosition()
         {
             Console.Clear();
@@ -130,7 +127,9 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
         }
 
-        //Afficher la position dans la forêt
+        /// <summary>
+        ///Méthode qui affiche "Forêt"
+        /// </summary>
         public static void DisplayForestPosition()
         {
             Console.Clear();
@@ -144,7 +143,9 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
         }
 
-        //Afficher la postion dans le marais
+        /// <summary>
+        ///Méthode qui affiche "Marais"
+        /// </summary>
         public static void DisplaySwampPosition()
         {
             Console.Clear();
@@ -158,7 +159,9 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
         }
 
-        //Afficher la postion dans les montagnes
+        /// <summary>
+        ///Méthode qui affiche "Montagne"
+        /// </summary>
         public static void DisplayMountainPosition()
         {
             Console.Clear();
@@ -172,7 +175,9 @@ namespace SurvieEnTerreInconnue
             Console.ResetColor();
         }
 
-        //Afficher l'inventaire
+        /// <summary>
+        ///Méthode qui affiche "Inventaire"
+        /// </summary>
         public static void DisplayInventoryItems()
         {
             Console.WriteLine("██╗███╗   ██╗██╗   ██╗███████╗███╗   ██╗████████╗ █████╗ ██╗██████╗ ███████╗" +
@@ -183,6 +188,10 @@ namespace SurvieEnTerreInconnue
                         "\r\n╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝");
             Console.ResetColor();
         }
+
+        /// <summary>
+        ///Méthode qui affiche "Matériaux"
+        /// </summary>
         public static void DisplayInventoryItem2()
         {
             Console.WriteLine("███╗   ███╗ █████╗ ████████╗███████╗██████╗ ██╗███████╗██╗   ██╗██╗  ██╗" +
@@ -193,6 +202,10 @@ namespace SurvieEnTerreInconnue
                         "\r\n╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝");
             Console.ResetColor();
         }
+
+        /// <summary>
+        ///Méthode qui affiche "Ressources"
+        /// </summary>
         public static void DisplayInventoryItem1()
         {
             Console.WriteLine("██████╗ ███████╗███████╗███████╗ ██████╗ ██╗   ██╗██████╗  ██████╗███████╗███████╗" +
@@ -203,7 +216,10 @@ namespace SurvieEnTerreInconnue
                                 "\r\n╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝");
             Console.ResetColor();
         }
-        //Afficher l'inventaire
+
+        /// <summary>
+        ///Méthode qui affiche "Fabrication"
+        /// </summary>
         public static void DisplayManufacturingItems()
         {
             Console.WriteLine("███████╗ █████╗ ██████╗ ██████╗ ██╗ ██████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗" +
@@ -214,6 +230,10 @@ namespace SurvieEnTerreInconnue
                                 "\r\n╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝");
             Console.ResetColor();
         }
+
+        /// <summary>
+        ///Méthode qui affiche la maison 
+        /// </summary>
         public static void DisplayHouse()
         {
 
@@ -240,7 +260,9 @@ namespace SurvieEnTerreInconnue
 
         }
 
-        // Monsieur Kevin m'a aidé à faire ce bout de code (fonction) parce que la méthode précédente ne marchait pas très bien avec les Ascii Art,il a juste améliorer AnimateText()
+        /// <summary>
+        ///Méthode qui affiche "Base"
+        /// </summary>
         public static void AnimateText(string texte, ConsoleColor couleur = ConsoleColor.White, int timeLimit = 30)
         {
             ConsoleColor savedColor = Console.ForegroundColor;
@@ -258,40 +280,9 @@ namespace SurvieEnTerreInconnue
             Console.ForegroundColor = savedColor;
         }
 
-        public static void DisplayPlaneCrash()
-        {
-            Console.WriteLine(
-                "\r\n                                       |" +
-                "\r\n                                       |" +
-                "\r\n                                     .-'-." +
-                "\r\n                                    ' ___ '" +
-                "\r\n                          ---------'  .-.  '---------" +
-                "\r\n          _________________________'  '-'  '_________________________" +
-                "\r\n           ''''''-|---|--/    \\==][^',_m_,'^][==/    \\--|---|-''''''" +
-                "\r\n                         \\    /  ||/   H   \\||  \\    /" +
-                "\r\n                          '--'   OO   O|O   OO   '--'");
-        }
-        public static void DisplaySnowFall()
-        {
-            Console.WriteLine(".      *    *           *.       *   .                      *     ." +
-                "\r\n               .   .                   __   *    .     * .     *" +
-                "\r\n    *       *         *   .     .    _|__|_        *    __   .       *" +
-                "\r\n  .  *  /\\       /\\          *        ('')    *       _|__|_     ." +
-                "\r\n       /  \\   * /  \\  *          .  <( . )> *  .       ('')   *   *" +
-                "\r\n  *    /  \\     /  \\   .   *       _(__.__)_  _   ,--<(  . )>  .    ." +
-                "\r\n      /    \\   /    \\          *   |       |  )),`   (   .  )     *" +
-                "\r\n   *   `||` ..  `||`   . *.   ... ==========='`   ... '--`-` ... * jb .");
-        }
-
-        public static void DisplayRules()
-        {
-            Console.WriteLine("██████╗ ███████╗ ██████╗ ██╗     ███████╗███████╗" +
-                        "\r\n██╔══██╗██╔════╝██╔════╝ ██║     ██╔════╝██╔════╝" +
-                        "\r\n██████╔╝█████╗  ██║  ███╗██║     █████╗  ███████╗" +
-                        "\r\n██╔══██╗██╔══╝  ██║   ██║██║     ██╔══╝  ╚════██║" +
-                        "\r\n██║  ██║███████╗╚██████╔╝███████╗███████╗███████║" +
-                        "\r\n╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝");
-        }
+        /// <summary>
+        ///Méthode qui affiche "Repas"
+        /// </summary>
         public static void DisplayCooking()
         {
             Console.WriteLine("██████╗ ███████╗██████╗  █████╗ ███████╗" +
@@ -301,6 +292,10 @@ namespace SurvieEnTerreInconnue
                         "\r\n██║  ██║███████╗██║     ██║  ██║███████║" +
                         "\r\n╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝╚══════╝");
         }
+
+        /// <summary>
+        ///Méthode qui affiche la barre d'énergie
+        /// </summary>
         public static void DisplayEnergyBar()
         {
             Console.Write("\nÉnergie: [");
@@ -339,6 +334,9 @@ namespace SurvieEnTerreInconnue
 
             Console.WriteLine($"] {Map.playerEnergy}%");
         }
+        /// <summary>
+        ///Méthode qui affiche "Game over"
+        /// </summary>
         public static void DisplayGameOver()
         {
             Console.WriteLine("██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗ " +
@@ -348,6 +346,10 @@ namespace SurvieEnTerreInconnue
                         "\r\n╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝ ╚████╔╝ ███████╗██║  ██║" +
                         "\r\n ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝");
         }
+
+        /// <summary>
+        ///Méthode qui affiche le message lorsque le joueur a perdu la partie
+        /// </summary>
         public static void DisplayLoseMessage()
         {
             DisplayGameOver();
@@ -355,6 +357,10 @@ namespace SurvieEnTerreInconnue
            
             ProcessNewGameConfirmation();
         }
+
+        /// <summary>
+        ///Méthode qui affiche le message de confirmation d'une nouvelle partie
+        /// </summary>
         public static ConsoleKey DisplayNewGameConfirmation()
         {
             Console.Clear();
@@ -365,6 +371,9 @@ namespace SurvieEnTerreInconnue
             return keyInfo.Key;
         }
 
+        /// <summary>
+        ///Méthode qui traite les choix effectuer dans le message de confirmation d'une nouvelle partie
+        /// </summary>
         public static void ProcessNewGameConfirmation()
         {
             bool waitingForChoice = true;

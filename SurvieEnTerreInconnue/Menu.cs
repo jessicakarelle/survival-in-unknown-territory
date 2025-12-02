@@ -15,14 +15,18 @@ namespace SurvieEnTerreInconnue
     internal class Menu
     {
         public static bool hasStartedGame = false;
-        // Méthode qui affiche un message et attend que l'utilisateur appuie sur une touche
+        /// <summary>
+        /// Méthode qui affiche un message et attend qu'une touche soit pressée par l'utilisateur.
+        /// </summary>
         public static void WaitForKeyPress(string message = "\nAppuyez sur une touche pour continuer...")
         {
             Console.WriteLine(message);
             Console.ReadKey();
         }
 
-        //Méthode qui affiche le menu principal
+        /// <summary>
+        /// Méthode qui affiche le menu principal du jeu
+        /// </summary>
         public static ConsoleKey DisplayMenu()
         {
             Console.Clear();
@@ -46,7 +50,9 @@ namespace SurvieEnTerreInconnue
             return selectedAction.Key;
         }
 
-        // La méthode traite les choix qui on été effectuer par l'utilisateur dans la méthode DisplayMenu
+        /// <summary>
+        /// Méthode qui traite les choix effectuer par l'utilisateur dans le menu principal.
+        /// </summary>
         public static void ProcessDisplayMenuInput()
         {
             bool continueGame = true;
@@ -106,7 +112,10 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-        // Méthode qui affiche les crédits du jeu
+
+        /// <summary>
+        /// Méthode qui affiche les crédits du jeu
+        /// </summary>
         public static void DisplayProgrammersCredits()
         {
             Display.DisplayCreditMessage();
@@ -122,7 +131,9 @@ namespace SurvieEnTerreInconnue
             Display.AnimateText("- Ajouts d'une barre d'énergie  \n", ConsoleColor.White, 50);
         }
 
-        // Méthode qui affiche le message de fin du jeu, on valide si l'utilisateur voulait vraiment quitter la partie 
+        /// <summary>
+        /// Méthode qui affiche le menu quitter et se rassure que l'utilisateur n'a pas quitté le jeu par erreur
+        /// </summary>
         public static ConsoleKey DisplayLeaveMessage()
         {
             Console.Clear();
@@ -137,7 +148,9 @@ namespace SurvieEnTerreInconnue
             return selectedAction.Key;
         }
 
-        //méthode qui va traiter le choix par rapport à ce qu'il aura choisi dans la méthode précédente
+        /// <summary>
+        /// Méthode qui traite les actions de l'utilisateur dans le menu de sorti du jeu
+        /// </summary>
         public static bool ProcessDisplayLeaveMessageInput()
         {
             ConsoleKey input = DisplayLeaveMessage();
@@ -166,7 +179,9 @@ namespace SurvieEnTerreInconnue
             }
         }
 
-        //Méthode qui affiche le message d'aurevoir à l'utilisateur
+        /// <summary>
+        /// Méthode qui affiche le message d'aurevoir à l'utilisateur
+        /// </summary>
         public static void DisplayGoodByeMessage()
         {
             Console.Clear();
@@ -174,14 +189,19 @@ namespace SurvieEnTerreInconnue
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
         }
-        //Méthode qui va afficher les régles du jeu
+
+        /// <summary>
+        /// Méthode qui affiche les règles du jeu
+        /// </summary>
         public static void DisplayGameRules()
         {
             Console.Clear();
             Console.ReadKey();
         }
-        //Méthode qui affiche l'histoire du jeu (une mise en contexte du jeu)
-   
+
+        /// <summary>
+        /// Méthode qui affiche la mise en contexte du jeu
+        /// </summary>
         public static void DisplayGameHistory()
         {
             Console.Clear();
@@ -190,7 +210,10 @@ namespace SurvieEnTerreInconnue
             Display.AnimateText("\nL'hiver approche ... Construisez vous un abris avant qu'il ene soit trop tard ...");
             Thread.Sleep(900);
         }
-        //Message qui s'affiche lorsque l'utilisateur réussi à construire une maison
+
+        /// <summary>
+        /// Message qui s'affcihe lorsque l'utilisateur réussi à construre une maison
+        /// </summary>
         public static void DisplayEndMessage()
         {
             Display.DisplayHouse();
@@ -198,7 +221,9 @@ namespace SurvieEnTerreInconnue
             Process.GetCurrentProcess().Kill();
         }
 
-        //Méthode qui affiche le menu de fabrication
+        /// <summary>
+        /// Méthode qui affiche le menu de fabrication
+        /// </summary>
         public static ConsoleKey DisplayManufacturingMenu()
         {
             Console.Clear();
@@ -206,7 +231,6 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine();
 
             Console.WriteLine("\t********************************************************************************************************");
-
             Console.WriteLine($"\t* {"[F]eu".PadRight(10)}: Cette action nécessite du Bois et du Silex                                               *");
             Console.WriteLine($"\t* {"[H]ache".PadRight(10)}: Cette action nécessite du Bois et du Fer                                                 *");
             Console.WriteLine($"\t* {"[V]itre".PadRight(10)}: Cette action nécessite du Sable et du Feu                                                *");
@@ -226,6 +250,9 @@ namespace SurvieEnTerreInconnue
             return selectedAction.Key;
         }
 
+        /// <summary>
+        /// Méthode qui affiche le menu de préparationb des aliments (poission et gibier)
+        /// </summary>
         public static ConsoleKey DisplayCookingMenu()
         {
             Console.Clear();
@@ -246,6 +273,9 @@ namespace SurvieEnTerreInconnue
             return key.Key;
         }
 
+        /// <summary>
+        /// Méthode qui traite les choix effectué dans le menu de préparation
+        /// </summary>
         public static void ProcessCookingMenuInput()
         {
             bool continueCooking = true;
@@ -296,7 +326,9 @@ namespace SurvieEnTerreInconnue
             }
         }
 
-        //Méthode qui traite les choix effectuer par l'utilisateur dans le menu de fabrication
+        /// <summary>
+        /// Méthode qui traite les choix effectué dans le menu de fabrication
+        /// </summary>
         public static bool ProcessDisplayManufacturingInput()
         {
             bool continueManufacturing = true;
@@ -381,7 +413,9 @@ namespace SurvieEnTerreInconnue
             return true;
         }
 
-        //Méthode qui affiche le menu d'inventaire principal
+        /// <summary>
+        /// Méthode qui affiche le menu d'inventaire principal
+        /// </summary>
         public static ConsoleKey DisplayInventoryPrincipalMenu()
         {
             Console.Clear();
@@ -401,7 +435,9 @@ namespace SurvieEnTerreInconnue
             return selectedAction.Key;
         }
 
-        //Méthode qui va traiter kes choix effectuer dans la méthode précédente
+        /// <summary>
+        /// Méthode qui traite les choix effectué dans l'inventaire principal
+        /// </summary>
         public static void ProcessInventoryInput()
         {
             bool continueInventory = true;
@@ -444,6 +480,10 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
+
+        /// <summary>
+        /// Méthode qui affiche l'inventaire de ressources
+        /// </summary>
         public static void DisplayInventoryMenu1()
         {
 
@@ -463,24 +503,10 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine($"\t\t* {"Poisson".PadRight(20)}: {$"{Map.resourceAmounts[16].ToString()}".PadRight(28)}*");
             Console.WriteLine("\t\t*****************************************************");
         }
-        //resourceNames[0] = Fer
-        //resourceNames[1] = Bois
-        //resourceNames[2] = Silex 
-        //resourceNames[3] = Argile
-        //resourceNames[4] = Herbe
-        //resourceNames[5] = Sable
-        //resourceNames[6] = Feu
-        //resourceNames[7] = Haches
-        //resourceNames[8] = Vitre
-        //resourceNames[9] = Planche
-        //resourceNames[10] = Briques
-        //resourceNames[11] = Isolants
-        //resourceNames[12] = Maison
-        //resourceNames[13] = Fruits
-        //resourceNames[14] = Eau
-        //resourceNames[15] = Gibier
-        //resourceNames[16] = Poisson
-        //Méthode qui affiche le deuxième menu d'inventaire (matériaux)
+     
+        /// <summary>
+        /// Méthode qui affiche l'inventaire des matériaux
+        /// </summary>
         public static void DisplayInventoryMenu2()
         {
             Console.Clear();
@@ -497,24 +523,5 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine($"\t\t* {"Maison".PadRight(20)}:{$"{Map.resourceAmounts[12].ToString()}".PadRight(28)}  *");
             Console.WriteLine("\t\t*****************************************************");
         }
-
-        //resourceNames[0] = Fer
-        //resourceNames[1] = Bois
-        //resourceNames[2] = Silex 
-        //resourceNames[3] = Argile
-        //resourceNames[4] = Herbe
-        //resourceNames[5] = Sable
-        //resourceNames[6] = Feu
-        //resourceNames[7] = Haches
-        //resourceNames[8] = Vitre
-        //resourceNames[9] = Planche
-        //resourceNames[10] = Briques
-        //resourceNames[11] = Isolants
-        //resourceNames[12] = Maison
-        //resourceNames[13] = Fruits
-        //resourceNames[14] = Eau
-        //resourceNames[15] = Gibier
-        //resourceNames[16] = Poisson
-        //Méthode qui affiche le premier menu d'inventaire (ressources)
     }
 }

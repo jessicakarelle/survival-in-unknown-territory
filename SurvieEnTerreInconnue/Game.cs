@@ -10,7 +10,9 @@ namespace SurvieEnTerreInconnue
     {
         public const string FileName = "data.txt";
 
-        //Méthode qui sérialise les données et les transforme en format JSON 
+        /// <summary>
+        ///Méthode qui sérialise les données 
+        /// </summary>
         public static void DataSerialisation()
         {
             try
@@ -58,7 +60,11 @@ namespace SurvieEnTerreInconnue
             }
         }
 
-        //Méthode qui désérialize les données et les convertit dans leur types exacts
+        /// <summary>
+        ///Méthode qui désérialise les données 
+        /// </summary>
+        /// /// <param name="mapGridList">the left side operand.</param>
+        /// <param name="operand2">the right side operand.</param>
         public static void DataDeserialisation()
         {
             try

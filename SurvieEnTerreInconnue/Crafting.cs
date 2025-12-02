@@ -6,6 +6,10 @@ namespace SurvieEnTerreInconnue
 {
     internal class Crafting
     {
+        /// <summary>
+        /// Méthode qui affiche le m'essage d'aide pour trouver les ressources
+        /// </summary>
+        /// <param name="index">Indice </param>
         public static void HintWhereToFind(int index)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -45,6 +49,10 @@ namespace SurvieEnTerreInconnue
 
             Console.ResetColor();
         }
+
+        /// <summary>
+        /// Méthode qui fabrique
+        /// </summary>
         public static void BuildHouse()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -86,6 +94,9 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        /// <summary>
+        /// Méthode qui fabrique une hache
+        /// </summary>
         public static void BuildAxe()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -116,6 +127,8 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        /// <summary>
+        /// Méthode qui fabrique une vitre
         public static void BuildGlass()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -146,7 +159,10 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-       
+
+        /// <summary>
+        /// Méthode qui fabrique une planche
+        /// </summary>
         public static void BuildPlank()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -176,6 +192,9 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        /// <summary>
+        /// Méthode qui fabrique une brique
+        /// </summary>
         public static void BuildBrick()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -255,7 +274,11 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-       
+
+        /// <summary>
+        /// Méthode qui prépare un poisson
+        /// </summary>
+        /// 
         public static void CookFish()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -276,6 +299,9 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        /// <summary>
+        /// Méthode qui prépare du gibier
+        /// </summary>
         public static void CookMeat()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -296,7 +322,11 @@ namespace SurvieEnTerreInconnue
                 HintWhereToFind(7);
             }
         }
-        /* 5 = fruits; 6 = eau; 7 = gibier; 8 = poisson*/
+
+
+        /// <summary>
+        /// Méthode qui permet de bore de l'eau
+        /// </summary>
         public static void DrinkWater()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -315,6 +345,10 @@ namespace SurvieEnTerreInconnue
                 HintWhereToFind(6);
             }
         }
+
+        /// <summary>
+        /// Méthode qui permet de manger des fruits
+        /// </summary>
         public static void EatFruits()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -335,6 +369,9 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        /// <summary>
+        /// Méthode qui initialise le max d'énergie du joueur à 100%
+        /// </summary>
         public static void MaxPlayerEnergy()
         {
             if (Map.playerEnergy > 100)
