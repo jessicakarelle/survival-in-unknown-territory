@@ -265,7 +265,6 @@ namespace SurvieEnTerreInconnue
                         break;
                 }
             }
-
             return true;
         }
 
