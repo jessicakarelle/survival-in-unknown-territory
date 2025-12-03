@@ -26,6 +26,9 @@ namespace SurvieEnTerreInconnue
         /// Grille rempli de booléen, true si la case a déja été visité, false dans le cas contraire
         /// </summary>
         public static bool[,] discovered = new bool[10, 10];
+        /// <summary>
+        /// Générateur de nombres aléatoires
+        /// </summary>
         public static Random randomGenerator = new Random();
         /// <summary>
         /// Tableau de chaines de caractères indiquant le nom de chaque ressources et matériaux du jeu
@@ -37,7 +40,7 @@ namespace SurvieEnTerreInconnue
         /// </summary>
         public static int[] resourceAmounts = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         /// <summary>
-        /// Nombre de voyages restants pour le joueur.
+        /// Indique le nombre de voyages restants pour le joueur.
         /// </summary>
         public static int numberOfTripsRemaining = 200;
         /// <summary>
@@ -142,7 +145,6 @@ namespace SurvieEnTerreInconnue
             }
         }
 
-
         /// <summary>
         /// Méthode qui réinitialise toutes les données du jeu
         /// </summary>
@@ -151,7 +153,6 @@ namespace SurvieEnTerreInconnue
             playerPositionX = 0;
             playerPositionY = 0;
             playerEnergy = 100;
-
             numberOfTripsRemaining = 200;
 
             for (int i = 0; i < resourceAmounts.Length; i++)
@@ -166,7 +167,6 @@ namespace SurvieEnTerreInconnue
                     discovered[i, j] = false;
                 }
             }
-
             discovered[0, 0] = true;
 
             GenerateMap();

@@ -555,11 +555,14 @@ namespace SurvieEnTerreInconnue
             Console.Clear();
             Display.AnimateText("Êtes vous sûr de vouloir quitter la partie ?");
             Console.WriteLine();
-            Console.WriteLine("[O]ui, je souhaite quitter la partie");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\n[O]ui, je souhaite quitter la partie");
+            Console.ResetColor();
             Console.WriteLine("[N]on, je ne souhaite plus quitter la partie");
             Console.WriteLine("[S]auvegarder ma progression et quitter");
             Console.WriteLine();
             Console.Write("Votre choix : ");
+           
             ConsoleKeyInfo selectedAction = Console.ReadKey();
             return selectedAction.Key;
         }

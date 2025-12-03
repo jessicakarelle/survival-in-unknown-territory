@@ -29,7 +29,7 @@ namespace SurvieEnTerreInconnue
                 {
                     case ConsoleKey.D:
                         Map.hasStartedGame = true;
-                       Display.DisplayGameHistory();
+                        Display.DisplayGameHistory();
                         Map.ResetGame();
                         Map.ShowTerrainAtCurrentPosition();
                         Thread.Sleep(1000);
