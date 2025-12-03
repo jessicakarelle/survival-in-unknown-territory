@@ -86,25 +86,10 @@ namespace SurvieEnTerreInconnue
 
             switch (input)
             {
-                case ConsoleKey.O:
-                    Console.Clear();
-                    DisplayGoodByeMessage();
-                    Thread.Sleep(3000);
-                    return false;
-
-                case ConsoleKey.N:
-                    return true;
-
-                case ConsoleKey.S:
-                    Game.DataSerialisation();
-                    DisplayGoodByeMessage();
-                    return false;
-
-                default:
-                    Display.AnimateText("Choix invalide. Retour au menu...");
-                    Thread.Sleep(1500);
-                    ProcessDisplayMenuInput();
-                    return true;
+                case ConsoleKey.O: Console.Clear();DisplayGoodByeMessage();Thread.Sleep(3000); return false;
+                case ConsoleKey.N: return true;
+                case ConsoleKey.S:Game.DataSerialisation();DisplayGoodByeMessage();return false;
+                default: Display.AnimateText("Choix invalide. Retour au menu..."); Thread.Sleep(1500);ProcessDisplayMenuInput();return true;
             }
         }
 
@@ -128,7 +113,6 @@ namespace SurvieEnTerreInconnue
             Console.ReadKey();
         }
 
-   
         /// <summary>
         /// Méthode qui traite les choix effectué dans le menu de préparation
         /// </summary>
@@ -142,42 +126,14 @@ namespace SurvieEnTerreInconnue
 
                 switch (input)
                 {
-                    case ConsoleKey.P:
-                        Crafting.CookFish();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.G:
-                        Crafting.CookMeat();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.A:
-                        ProcessInventoryInput();
-                        break;
-
-                    case ConsoleKey.E:
-                        Map.ShowTerrainAtCurrentPosition();
-                        break;
-                    case ConsoleKey.R:
-                        ProcessDisplayManufacturingInput();
-                        break;
-                    case ConsoleKey.Escape:
-                        ProcessDisplayMenuInput();
-                        Console.WriteLine("Appuyez sur la touche Entrez pour continuer votre partie ...");
-                        Console.ReadKey();
-                        continueCooking = false;
-                        break;
-
-                    case ConsoleKey.Q:
-                        Display.DisplayLeaveMessage();
-                        continueCooking = false;
-                        break;
-
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Action annulée.");
-                        break;
+                    case ConsoleKey.P: Crafting.CookFish();Display.WaitForKeyPress();break;
+                    case ConsoleKey.G:Crafting.CookMeat();Display.WaitForKeyPress();break;
+                    case ConsoleKey.A:ProcessInventoryInput();break;
+                    case ConsoleKey.E:Map.ShowTerrainAtCurrentPosition();break;
+                    case ConsoleKey.R:ProcessDisplayManufacturingInput();break;
+                    case ConsoleKey.Escape: ProcessDisplayMenuInput();Console.WriteLine("Appuyez sur la touche Entrez pour continuer votre partie ..."); Console.ReadKey();continueCooking = false;break;
+                    case ConsoleKey.Q:Display.DisplayLeaveMessage();continueCooking = false;break;
+                    default:Console.Clear();Console.WriteLine("Action annulée.");break;
                 }
             }
         }
@@ -196,76 +152,21 @@ namespace SurvieEnTerreInconnue
 
                 switch (input)
                 {
-                    case ConsoleKey.F:
-                        Console.Clear();
-                        Crafting.BuildFire();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.H:
-                        Console.Clear();
-                        Crafting.BuildAxe();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.V:
-                        Console.Clear();
-                        Crafting.BuildGlass();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.P:
-                        Console.Clear();
-                        Crafting.BuildPlank();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.B:
-                        Console.Clear();
-                        Crafting.BuildBrick();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.I:
-                        Console.Clear();
-                        Crafting.BuildInsulator();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.M:
-                        Console.Clear();
-                        Crafting.BuildHouse();
-                        Console.ReadKey();
-                        break;
-
-                    case ConsoleKey.N:
-                        ProcessCookingMenuInput();
-                        break;
-
-                    case ConsoleKey.C:
-                        ProcessInventoryInput();
-                        break;
-
-                    case ConsoleKey.Escape:
-                        ProcessDisplayMenuInput();
-                        return continueManufacturing = true;
-
-                    case ConsoleKey.E:
-                        Map.GenerateMap();
-                        Map.ShowTerrainAtCurrentPosition();
-                        break;
-
-                    case ConsoleKey.Q:
-                        ProcessDisplayLeaveMessageInput();
-                        return continueManufacturing = false;
-
-                    default:
-                        Console.Clear();
-                        Display.AnimateText("Action annulée");
-                        break;
+                    case ConsoleKey.F:Console.Clear();Crafting.BuildFire(); Display.WaitForKeyPress();break;
+                    case ConsoleKey.H:Console.Clear(); Crafting.BuildAxe();Display.WaitForKeyPress();break;
+                    case ConsoleKey.V:Console.Clear(); Crafting.BuildGlass();Display.WaitForKeyPress(); break;
+                    case ConsoleKey.P:Console.Clear();Crafting.BuildPlank(); Display.WaitForKeyPress(); break;
+                    case ConsoleKey.B:Console.Clear();Crafting.BuildBrick();Display.WaitForKeyPress();break;
+                    case ConsoleKey.I:Console.Clear();Crafting.BuildInsulator();Display.WaitForKeyPress();  break;
+                    case ConsoleKey.M:Console.Clear();Crafting.BuildHouse();Console.ReadKey();break;
+                    case ConsoleKey.N: ProcessCookingMenuInput(); break;
+                    case ConsoleKey.C:ProcessInventoryInput();break;
+                    case ConsoleKey.Escape:ProcessDisplayMenuInput();return continueManufacturing = true;
+                    case ConsoleKey.E: Map.GenerateMap();Map.ShowTerrainAtCurrentPosition();break;
+                    case ConsoleKey.Q:ProcessDisplayLeaveMessageInput(); return continueManufacturing = false;
+                    default:Console.Clear();Display.AnimateText("Action annulée");break;
                 }
             }
-
             return true;
         }
 
@@ -283,34 +184,12 @@ namespace SurvieEnTerreInconnue
 
                 switch (input)
                 {
-                    case ConsoleKey.R:
-                        Display.DisplayInventoryMenu1();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.M:
-                        Display.DisplayInventoryMenu2();
-                        Display.WaitForKeyPress();
-                        break;
-
-                    case ConsoleKey.E:
-                        Map.ShowTerrainAtCurrentPosition();
-                        break;
-                    
-                   case ConsoleKey.Escape:
-                        ProcessDisplayMenuInput();
-                        continueInventory = false;
-                        break;
-
-                    case ConsoleKey.Q:
-                        continueInventory = false;
-                        break;
-
-                    default:
-                        Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Thread.Sleep(500);
-                        break;
+                  case ConsoleKey.R:Display.DisplayInventoryMenu1(); Display.WaitForKeyPress();break;
+                  case ConsoleKey.M:Display.DisplayInventoryMenu2();Display.WaitForKeyPress();break;
+                  case ConsoleKey.E:Map.ShowTerrainAtCurrentPosition(); break;
+                  case ConsoleKey.Escape:ProcessDisplayMenuInput(); continueInventory = false;break;
+                  case ConsoleKey.Q:continueInventory = false;break;
+                  default: Console.Clear();Display.AnimateText("Choix invalide. Veuillez réessayer.");Thread.Sleep(500);break;
                 }
             }
         }

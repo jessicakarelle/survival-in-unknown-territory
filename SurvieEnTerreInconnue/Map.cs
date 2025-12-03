@@ -10,51 +10,28 @@ namespace SurvieEnTerreInconnue
 {
     internal class Map
     {
-        /// <summary>
-        /// Indique la position en X du joueur sur la carte.
-        /// </summary>
+        /// <value> Indique la position en X du joueur sur la carte.</value>>
         public static int playerPositionX = 0;
-        /// <summary>
-        /// Indique la position en Y du joueur sur la carte.
-        /// </summary>
+        /// <value> Indique la position en Y du joueur sur la carte.</value>>
         public static int playerPositionY = 0;
-        /// <summary>
-        /// Grille rempli de chiffre entre 0 et 7, chaque chiffre correspond à un terrain
-        /// </summary>
+        /// <value>Grille rempli de chiffre entre 0 et 7, chaque chiffre correspond à un terrain.</value>>
         public static int[,] mapGrid = new int[10, 10];
-        /// <summary>
-        /// Grille rempli de booléen, true si la case a déja été visité, false dans le cas contraire
-        /// </summary>
+       /// <value>Grille rempli de booléen, true si la case a déja été visité, false dans le cas contraire.</value>>
         public static bool[,] discovered = new bool[10, 10];
-        /// <summary>
-        /// Générateur de nombres aléatoires
-        /// </summary>
+        /// <value> Générateur de nombres aléatoires</value>>
         public static Random randomGenerator = new Random();
-        /// <summary>
-        /// Tableau de chaines de caractères indiquant le nom de chaque ressources et matériaux du jeu
-        /// </summary>
+        /// <value> Tableau de chaines de caractères indiquant le nom de chaque ressources et matériaux du jeu</value>>
         public static string[] resourceNames = {"Fer", "Bois", "Silex", "Argile", "Herbes", "Sable",
                                                 "Feu", "Haches", "Vitre", "Planche", "Briques", "Isolants", "Maisons", "Fruits", "Eau" , "Gibier", "Poisson" };
-        /// <summary>
-        /// Tableau qui affiche la quantités des différentes ressources possédées par le joueur.
-        /// </summary>
+        /// <value> Tableau qui affiche la quantités des différentes ressources possédées par le joueur.</value>>
         public static int[] resourceAmounts = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        /// <summary>
-        /// Indique le nombre de voyages restants pour le joueur.
-        /// </summary>
+        /// <value> Indique le nombre de voyages restants pour le joueur.</value>>
         public static int numberOfTripsRemaining = 200;
-        /// <summary>
-        /// Indique l'énergie du joueur 
-        /// </summary>
+        /// <value> Indique l'énergie du joueur </value>>
         public static int playerEnergy = 100;
-        /// <summary>
-        /// Indique si le joueur a déja commencé une partie de jeu
-        /// </summary>
+        /// <value>Indique si le joueur a déja commencé une partie de jeu</value>
         public static bool hasStartedGame = false;
-
-        /// <summary>
-        /// Méthode qui diminue le nombres de déplacements restants du joueur ainsi que son énergie
-        /// </summary>
+        /// <value>Méthode qui diminue le nombres de déplacements restants du joueur ainsi que son énergie</value>
         public static bool ManageNumberOfTrip()
         {
             numberOfTripsRemaining--;

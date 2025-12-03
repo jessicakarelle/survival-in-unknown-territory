@@ -325,6 +325,7 @@ namespace SurvieEnTerreInconnue
                 Console.Write("░");
             }
             Console.WriteLine($"] {Map.playerEnergy}%");
+            Console.ResetColor();
         }
 
         /// <summary>
@@ -348,7 +349,6 @@ namespace SurvieEnTerreInconnue
             DisplayGameOver();
             Console.WriteLine();
             Console.ReadKey();
-           
             ProcessNewGameConfirmation();
         }
 
@@ -555,9 +555,7 @@ namespace SurvieEnTerreInconnue
             Console.Clear();
             Display.AnimateText("Êtes vous sûr de vouloir quitter la partie ?");
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("\n[O]ui, je souhaite quitter la partie");
-            Console.ResetColor();
             Console.WriteLine("[N]on, je ne souhaite plus quitter la partie");
             Console.WriteLine("[S]auvegarder ma progression et quitter");
             Console.WriteLine();
@@ -638,7 +636,6 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine($"Nombre de déplacement(s) restant(s) : {Map.numberOfTripsRemaining}");
             Display.DisplayEnergyBar();
             Console.WriteLine();
-            Console.ResetColor();
             Console.WriteLine("Veuillez sélectionner une option :");
             Console.WriteLine();
             Console.WriteLine("[N]ord : Vous vous déplacez vers le haut");
