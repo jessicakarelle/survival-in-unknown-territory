@@ -4,28 +4,8 @@
     {
         static void Main(string[] args)
         {
-            /*Map.GenerateMap();
-            Map.DisplayGridMap();
-            Console.WriteLine("\nAppuyez sur une touche pour commencer à explorer...");
-            Console.ReadKey();
-            Map.ShowTerrainAtCurrentPosition();
-            /*Map.GenerateMap();
-            Map.ProcessExplorationInput();*/
-            //Menu.ProcessInventoryInput();
-            //Menu.DisplayManufacturingMenu();
-            //Menu.ProcessDisplayMenuInput();
-            //"Menu.DisplayInventoryMenu1();
-            //Menu.ProcessInventoryInput();
-            //Menu.ProcessDisplayManufacturingInput();
-            //Menu.DisplayEndMessage();
             Display.DisplayGameTitle();
             Menu.ProcessDisplayMenuInput();
-            //Display.DisplayMountain();
-            //Display.DisplayForest();
-            //Map.DisplayDirection();
-            //Display.DisplayPlaneCrash();
-            //Menu.DisplayGameHistory();
-            //Display.DisplayLoseGame();
         }
     }
 }

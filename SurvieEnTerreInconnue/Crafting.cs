@@ -7,51 +7,30 @@ namespace SurvieEnTerreInconnue
     internal class Crafting
     {
         /// <summary>
-        /// Méthode qui affiche le m'essage d'aide pour trouver les ressources
+        /// Méthode qui affiche le message d'aide pour trouver les ressources manquantes
         /// </summary>
-        /// <param name="index">Indice </param>
+        /// <param name="index">Indice de la ressources manquantes</param>
         public static void HintWhereToFind(int index)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             switch (index)
             {
-                case 0:
-                    Console.WriteLine("\nIndice : Vous trouverez du fer dans la montagne.\n");
-                    break;
-                case 1:
-                    Console.WriteLine("\nIndice : Vous trouverez du bois dans la forêt.\n");
-                    break;
-                case 2:
-                    Console.WriteLine("\nIndice : Vous trouverez du silex dans la rivière.\n");
-                    break;
-                case 3:
-                    Console.WriteLine("\nIndice : Vous trouverez de l'argile dans le marais.\n");
-                    break;
-                case 4:
-                    Console.WriteLine("\nIndice : Vous trouverez de l'herbe dans la prairie.\n");
-                    break;
-                case 5:
-                    Console.WriteLine("\nIndice : Vous trouvez des fruits dans la forêt \n");
-                    break;
-                case 6:
-                    Console.WriteLine("\nIndice : Vous trouverez de l'eau dans le marais et la rivière\n");
-                    break;
-                case 7:
-                    Console.WriteLine("\nIndice : Vous trouverez du gibier dans la forêt\n");
-                    break;
-                case 8:
-                    Console.WriteLine("\nIndice : Vous trouverez du poisson dans la rivière et le marais \n");
-                    break;
-                case 9:
-                    Console.WriteLine("\nIndice : Vous trouverez du sable dans le désert \n");
-                    break;
+                case 0:Console.WriteLine("\nIndice : Vous trouverez du fer dans la montagne.\n");break;
+                case 1: Console.WriteLine("\nIndice : Vous trouverez du bois dans la forêt.\n");break;
+                case 2: Console.WriteLine("\nIndice : Vous trouverez du silex dans la rivière.\n");break;
+                case 3:Console.WriteLine("\nIndice : Vous trouverez de l'argile dans le marais.\n");break;
+                case 4: Console.WriteLine("\nIndice : Vous trouverez de l'herbe dans la prairie.\n"); break;
+                case 5:Console.WriteLine("\nIndice : Vous trouvez des fruits dans la forêt \n");break;
+                case 6:Console.WriteLine("\nIndice : Vous trouverez de l'eau dans le marais et la rivière\n");break;
+                case 7: Console.WriteLine("\nIndice : Vous trouverez du gibier dans la forêt\n");break;
+                case 8: Console.WriteLine("\nIndice : Vous trouverez du poisson dans la rivière et le marais \n"); break;
+                case 9:Console.WriteLine("\nIndice : Vous trouverez du sable dans le désert \n");break;
             }
-
             Console.ResetColor();
         }
 
         /// <summary>
-        /// Méthode qui fabrique
+        /// Méthode qui permet de fabriquer une maison
         /// </summary>
         public static void BuildHouse()
         {
@@ -77,7 +56,6 @@ namespace SurvieEnTerreInconnue
                 if (missingPlanks > 0)
                 {
                     Console.WriteLine($"- {missingPlanks} planche(s)");
-
                 } 
                 if (missingBricks > 0) 
                 {
@@ -95,7 +73,7 @@ namespace SurvieEnTerreInconnue
         }
 
         /// <summary>
-        /// Méthode qui fabrique une hache
+        /// Méthode qui permet de fabriquer une hache
         /// </summary>
         public static void BuildAxe()
         {
@@ -113,7 +91,6 @@ namespace SurvieEnTerreInconnue
             else
             {
                 Console.WriteLine("Impossible de fabriquer une hache, il manque :");
-
                 if (missingWood > 0)
                 {
                     Console.WriteLine("- 1 bois");
@@ -128,7 +105,7 @@ namespace SurvieEnTerreInconnue
         }
 
         /// <summary>
-        /// Méthode qui fabrique une vitre
+        /// Méthode qui permet de fabriquer une vitre
         public static void BuildGlass()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -151,7 +128,6 @@ namespace SurvieEnTerreInconnue
                     Console.WriteLine("- 1 sable");
                     HintWhereToFind(9);
                 }
-
                 if (missingFire > 0)
                 {
                     Console.WriteLine("- 1 feu");
@@ -161,7 +137,7 @@ namespace SurvieEnTerreInconnue
         }
 
         /// <summary>
-        /// Méthode qui fabrique une planche
+        /// Méthode qui permet de fabriquer une planche
         /// </summary>
         public static void BuildPlank()
         {
@@ -193,7 +169,7 @@ namespace SurvieEnTerreInconnue
         }
 
         /// <summary>
-        /// Méthode qui fabrique une brique
+        /// Méthode qui permet de fabriquer une brique
         /// </summary>
         public static void BuildBrick()
         {
@@ -211,7 +187,6 @@ namespace SurvieEnTerreInconnue
             else
             {
                 Console.WriteLine("Impossible de fabriquer une brique, il manque :");
-
                 if (missingClay > 0) 
                 {
                     Console.WriteLine("- 1 argile");
@@ -224,7 +199,10 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
-       
+
+        /// <summary>
+        /// Méthode qui permet de faire des isolants
+        /// </summary>
         public static void BuildInsulator()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -244,6 +222,9 @@ namespace SurvieEnTerreInconnue
             }
         }
 
+        /// <summary>
+        /// Méthode qui permet de faire du feu
+        /// </summary>
         public static void BuildFire()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -276,9 +257,8 @@ namespace SurvieEnTerreInconnue
         }
 
         /// <summary>
-        /// Méthode qui prépare un poisson
+        /// Méthode qui permet de préparer du poisson
         /// </summary>
-        /// 
         public static void CookFish()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -300,7 +280,7 @@ namespace SurvieEnTerreInconnue
         }
 
         /// <summary>
-        /// Méthode qui prépare du gibier
+        /// Méthode qui permet de préaprer du gibier
         /// </summary>
         public static void CookMeat()
         {
@@ -315,7 +295,6 @@ namespace SurvieEnTerreInconnue
                 Map.playerEnergy += 50;
                 MaxPlayerEnergy();
             }
-
             else
             {
                 Console.WriteLine($"\nVous ne pouvez pas cuisiner de gibier, il vous faut au {missingMeal} gibier pour pouvoir le cuisiner");
@@ -325,7 +304,7 @@ namespace SurvieEnTerreInconnue
 
 
         /// <summary>
-        /// Méthode qui permet de bore de l'eau
+        /// Méthode qui permet de boire de l'eau
         /// </summary>
         public static void DrinkWater()
         {
@@ -379,6 +358,5 @@ namespace SurvieEnTerreInconnue
                 Map.playerEnergy = 100;
             }
         }
-
     }
 }

@@ -31,9 +31,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                             ");
             Console.WriteLine();
             Console.ResetColor();
-            Console.WriteLine("\n\nAppuyez sur touche pour commençer le jeu....");
-
-            Console.ReadKey();
+            WaitForKeyPress("\n\nAppuyez sur touche pour commençer le jeu....");
         }
 
         /// <summary>
@@ -73,8 +71,8 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine("██████╗  █████╗ ███████╗███████╗" +
                         "\r\n██╔══██╗██╔══██╗██╔════╝██╔════╝" +
                         "\r\n██████╔╝███████║███████╗█████╗" +
-                        "  \r\n██╔══██╗██╔══██║╚════██║██╔══╝ " +
-                        " \r\n██████╔╝██║  ██║███████║███████╗" +
+                        "\r\n██╔══██╗██╔══██║╚════██║██╔══╝ " +
+                        "\r\n██████╔╝██║  ██║███████║███████╗" +
                         "\r\n╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝");
             Console.ResetColor();
         }
@@ -236,7 +234,6 @@ namespace SurvieEnTerreInconnue
         /// </summary>
         public static void DisplayHouse()
         {
-
             string art = @"                                    /\
                                /\  //\\
                         /\    //\\///\\\        /\
@@ -253,11 +250,8 @@ namespace SurvieEnTerreInconnue
  / ^ ^ ^  ^  ^  ^   ||||||||||||||||||||||||||||||oooooooooo| |ooooooo
  ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
             ;
-
             Console.WriteLine(art);
-
             Console.ResetColor();
-
         }
 
         /// <summary>
@@ -276,7 +270,6 @@ namespace SurvieEnTerreInconnue
                     Thread.Sleep(timeLimit);
                 }
             }
-
             Console.ForegroundColor = savedColor;
         }
 
@@ -331,9 +324,9 @@ namespace SurvieEnTerreInconnue
             {
                 Console.Write("░");
             }
-
             Console.WriteLine($"] {Map.playerEnergy}%");
         }
+
         /// <summary>
         ///Méthode qui affiche "Game over"
         /// </summary>
@@ -390,8 +383,7 @@ namespace SurvieEnTerreInconnue
                         break;
                     case ConsoleKey.N:
                         waitingForChoice = false;
-                        Console.WriteLine("Appuyer sur une touche pour quitter le jeu ...");
-                        Console.ReadKey();
+                        WaitForKeyPress("Appuyer sur une touche pour quitter le jeu ...");
                         Process.GetCurrentProcess().Kill();
                         break;
                     default:

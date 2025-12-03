@@ -10,20 +10,47 @@ namespace SurvieEnTerreInconnue
 {
     internal class Map
     {
+        /// <summary>
+        /// Indique la position en X du joueur sur la carte.
+        /// </summary>
         public static int playerPositionX = 0;
+        /// <summary>
+        /// Indique la position en Y du joueur sur la carte.
+        /// </summary>
         public static int playerPositionY = 0;
+        /// <summary>
+        /// Grille rempli de chiffre entre 0 et 7, chaque chiffre correspond à un terrain
+        /// </summary>
         public static int[,] mapGrid = new int[10, 10];
+        /// <summary>
+        /// Grille rempli de booléen, true si la case a déja été visité, false dans le cas contraire
+        /// </summary>
         public static bool[,] discovered = new bool[10, 10];
         public static Random randomGenerator = new Random();
+        /// <summary>
+        /// Tableau de chaines de caractères indiquant le nom de chaque ressources et matériaux du jeu
+        /// </summary>
         public static string[] resourceNames = {"Fer", "Bois", "Silex", "Argile", "Herbes", "Sable",
                                                 "Feu", "Haches", "Vitre", "Planche", "Briques", "Isolants", "Maisons", "Fruits", "Eau" , "Gibier", "Poisson" };
-        public static int numberOfTripsRemaining = 200;
-        public static int playerEnergy = 100;
+        /// <summary>
+        /// Tableau qui affiche la quantités des différentes ressources possédées par le joueur.
+        /// </summary>
         public static int[] resourceAmounts = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        /// <summary>
+        /// Nombre de voyages restants pour le joueur.
+        /// </summary>
+        public static int numberOfTripsRemaining = 200;
+        /// <summary>
+        /// Indique l'énergie du joueur 
+        /// </summary>
+        public static int playerEnergy = 100;
+        /// <summary>
+        /// Indique si le joueur a déja commencé une partie de jeu
+        /// </summary>
         public static bool hasStartedGame = false;
 
         /// <summary>
-        /// Méthode qui diminue le nombres de déplacements restants du joueur son énergie
+        /// Méthode qui diminue le nombres de déplacements restants du joueur ainsi que son énergie
         /// </summary>
         public static bool ManageNumberOfTrip()
         {
@@ -294,7 +321,7 @@ namespace SurvieEnTerreInconnue
             if (roll < 5) 
             {
                 Console.WriteLine("Vous avez collecté du poisson 🐟");
-                resourceAmounts[15]++; 
+                resourceAmounts[16]++; 
             }
             else if (roll < 45) 
             {
@@ -319,7 +346,7 @@ namespace SurvieEnTerreInconnue
             if (roll < 20) 
             {
                 Console.WriteLine("Vous avez collecté du poisson 🐟");
-                resourceAmounts[15]++; 
+                resourceAmounts[16]++; 
             }
             else if (roll < 50) 
             {

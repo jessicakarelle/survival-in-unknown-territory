@@ -14,7 +14,6 @@ namespace SurvieEnTerreInconnue
 {
     internal class Menu
     {
-
         /// <summary>
         /// Méthode qui traite les choix effectuer par l'utilisateur dans le menu principal.
         /// </summary>

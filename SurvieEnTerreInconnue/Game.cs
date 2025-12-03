@@ -11,7 +11,7 @@ namespace SurvieEnTerreInconnue
         public const string FileName = "data.txt";
 
         /// <summary>
-        ///Méthode qui sérialise les données 
+        ///Méthode qui sérialise les données du jeu
         /// </summary>
         public static void DataSerialisation()
         {
@@ -62,10 +62,8 @@ namespace SurvieEnTerreInconnue
         }
 
         /// <summary>
-        ///Méthode qui désérialise les données 
+        ///Méthode qui désérialise les données du jeu
         /// </summary>
-        /// /// <param name="mapGridList">the left side operand.</param>
-        /// <param name="operand2">the right side operand.</param>
         public static void DataDeserialisation()
         {
             try
