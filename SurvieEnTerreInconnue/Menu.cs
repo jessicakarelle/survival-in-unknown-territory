@@ -56,9 +56,9 @@ namespace SurvieEnTerreInconnue
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("Veuillez commencer une partie avant de pouvoir continuer.");
+                            Console.WriteLine("Veuillez commencer une partie avant de pouvoir continuer...");
                             Console.ResetColor();
-                            Display.WaitForKeyPress("\nAppuyez sur une touche pour retourner au menu principal");
+                            Display.WaitForKeyPress("\nAppuyez sur une touche pour retourner au menu principal...");
                         }
                         break;
                     default:
@@ -151,7 +151,7 @@ namespace SurvieEnTerreInconnue
                         break;
                     default:
                         Console.Clear();
-                        Console.WriteLine("Action annulée.");
+                        Display.DisplayErrorMessage("Action annulé...");
                         break;
                 }
             }
@@ -227,8 +227,7 @@ namespace SurvieEnTerreInconnue
                         return continueManufacturing = false;
                     default:
                         Console.Clear();
-                        Display.AnimateText("Action annulée");
-                        Display.WaitForKeyPress();
+                        Display.DisplayErrorMessage("Action annulée ...");
                         break;
                 }
             }
@@ -269,8 +268,7 @@ namespace SurvieEnTerreInconnue
                         break;
                     default:
                         Console.Clear();
-                        Display.AnimateText("Choix invalide. Veuillez réessayer.");
-                        Display.WaitForKeyPress();
+                        Display.DisplayErrorMessage();
                         break;
                 }
             }
@@ -298,8 +296,7 @@ namespace SurvieEnTerreInconnue
                         Process.GetCurrentProcess().Kill();
                         break;
                     default:
-                        Console.WriteLine("\nChoix invalide. Veuillez réessayer");
-                        Display.WaitForKeyPress();
+                        Display.DisplayErrorMessage();
                         break;
                 }
             }

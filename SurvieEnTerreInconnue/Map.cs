@@ -33,7 +33,7 @@ namespace SurvieEnTerreInconnue
         /// <value>Indique si le joueur veut quitter une partie de jeu</value>
         public static bool wantToQuitGame = false;
         /// <value>Indique le nom d'utilisateur du joueur</value>
-        public static string playerName = "Utilisateur";
+        public static string playerName = "Joueur";
 
         /// <summary>
         /// Méthode qui diminue le nombres de déplacements restants du joueur ainsi que son énergie
