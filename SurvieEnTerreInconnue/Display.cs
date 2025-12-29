@@ -365,6 +365,7 @@ namespace SurvieEnTerreInconnue
             WaitForKeyPress("\n\nAppuyez sur une touche pour continuer...");
             Menu.ProcessNewGameConfirmation();
         }
+
         /// <summary>
         /// Méthode qui affiche le message d'aurevoir à l'utilisateur
         /// </summary>
@@ -603,7 +604,7 @@ namespace SurvieEnTerreInconnue
             Console.ReadKey(true);
         }
 
-        public static void DisplayErrorMessage(string message = "\nChoix invalide, veuillez réessayer ...")
+        public static void DisplayErrorMessage(string message = "Choix invalide, veuillez réessayer ...")
         {
             Console.WriteLine(message);
             Console.ReadKey(true);

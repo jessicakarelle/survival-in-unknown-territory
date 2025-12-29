@@ -170,6 +170,7 @@ namespace SurvieEnTerreInconnue
                 }
             }
         }
+
         /// <summary>
         /// Méthode qui permet de fabriquer une planche
         /// </summary>

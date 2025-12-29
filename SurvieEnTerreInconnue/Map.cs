@@ -180,6 +180,7 @@ namespace SurvieEnTerreInconnue
                 default: Console.BackgroundColor = ConsoleColor.Black; break;
             }
         }
+
         /// <summary>
         /// Méthode qui attribue un émoji à un terrain donné
         /// </summary>
@@ -199,6 +200,7 @@ namespace SurvieEnTerreInconnue
                 default: Console.Write(""); break;
             }
         }
+
         /// <summary>
         /// Méthode qui détermine le terrain actuelle en fontion des nombres aléatoires générés pour chaque position du joueur
         /// </summary>
@@ -519,6 +521,7 @@ namespace SurvieEnTerreInconnue
             }
             return true;
         }
+
         /// <summary>
         ///Méthode qui affiche la limite de chaque coté de la carte
         /// </summary>
@@ -672,6 +675,7 @@ namespace SurvieEnTerreInconnue
         {
             return ProcessTerrainInput(DisplayForest);
         }
+
         /// <summary>
         ///Méthode qui traite les actions effectués dans la prairie
         /// </summary>
@@ -679,6 +683,7 @@ namespace SurvieEnTerreInconnue
         {
             return ProcessTerrainInput(DisplayPrairie);
         }
+
         /// <summary>
         ///Méthode qui traite les actions effectués dans le désert
         /// </summary>
@@ -686,6 +691,7 @@ namespace SurvieEnTerreInconnue
         {
             return ProcessTerrainInput(DisplayDesert);
         }
+
         /// <summary>
         ///Méthode qui traite les actions effectués dans la rivière
         /// </summary>
@@ -693,6 +699,7 @@ namespace SurvieEnTerreInconnue
         {
             return ProcessTerrainInput(DisplayRiver);
         }
+
         /// <summary>
         ///Méthode qui traite les actions effectués dans le marais
         /// </summary>
@@ -700,6 +707,7 @@ namespace SurvieEnTerreInconnue
         {
             return ProcessTerrainInput(DisplaySwamp);
         }
+
         /// <summary>
         ///Méthode qui traite les actions effectués dans la montagne
         /// </summary>
