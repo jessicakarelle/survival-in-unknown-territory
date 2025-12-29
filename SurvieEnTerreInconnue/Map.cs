@@ -217,6 +217,7 @@ namespace SurvieEnTerreInconnue
                 default: return "";
             }
         }
+
         /// <summary>
         /// Méthode qui colloecte les ressources sur chaque terrain, en fonction de leur probabilité de découverte
         /// </summary>

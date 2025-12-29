@@ -59,7 +59,7 @@ namespace SurvieEnTerreInconnue
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            
+
             Console.WriteLine(" ██████╗██████╗ ███████╗██████╗ ██╗████████╗       " +
                             "\r\n██╔════╝██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝       " +
                             "\r\n██║     ██████╔╝█████╗  ██║  ██║██║   ██║          " +
@@ -260,8 +260,7 @@ namespace SurvieEnTerreInconnue
    /^ ^  ^ ^^  ^    ||___|___||||||||||||___|__|||      /||o||||||\
   / ^   ^   ^    ^  ||___|___||||||||||||___|__|||          | |
  / ^ ^ ^  ^  ^  ^   ||||||||||||||||||||||||||||||oooooooooo| |ooooooo
- ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-            ;
+ ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo";
             Console.WriteLine(art);
             Console.ResetColor();
         }
@@ -543,11 +542,11 @@ namespace SurvieEnTerreInconnue
             AnimateText("\n\nQuel est votre nom, survivant ? ");
             string playerName = Console.ReadLine();
 
-            if(string.IsNullOrEmpty(playerName))
+            if (string.IsNullOrEmpty(playerName))
             {
                 playerName = "Joueur";
             }
-            
+
             Map.playerName = playerName;
             Console.Clear();
             Console.WriteLine($"Bonne chance, {Map.playerName}...");
