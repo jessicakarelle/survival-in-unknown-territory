@@ -31,3 +31,6 @@ Le jeu se termine lorsque le joueur construit une maison complète à la base **
 
 ## Projet scolaire
 Travail pratique réalisé en équipe dans un contexte académique.
+## Lancer le projet
+```bash
+git clone https://github.com/TON-UTILISATEUR/coco-chanel-website.git](https://github.com/jktchikapa/survival-in-unknown-territory-console-game-project
