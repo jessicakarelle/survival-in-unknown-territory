@@ -15,6 +15,10 @@ Le joueur explore un monde inconnu, collecte des ressources, fabrique des matér
 - Listes et tableaux multidimensionnels
 - Sauvegarde des données au format JSON
 
+## Outils
+- Git
+- Vs Code 2022
+  
 ## Lancer le projet
 ```bash
 git clone https://github.com/jktchikapa/survival-in-unknown-territory-console-game-project.git
