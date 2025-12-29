@@ -572,9 +572,8 @@ namespace SurvieEnTerreInconnue
             AnimateText("\n - Ajout des choix Boire/Manger");
             AnimateText("\n - Ajout d'une barre d'énergie");
             AnimateText("\n - Personnalisation avec le nom du joueur");
-
-            WaitForKeyPress("\n\nAppuyez sur une touche pour retourner au menu...");
         }
+
         /// <summary>
         /// Méthode qui affiche le menu quitter et se rassure que l'utilisateur n'a pas quitté le jeu par erreur
         /// </summary>
@@ -594,6 +593,7 @@ namespace SurvieEnTerreInconnue
             ConsoleKeyInfo selectedAction = Console.ReadKey(true);
             return selectedAction.Key;
         }
+
         /// <summary>
         /// Méthode qui affiche un message et attend qu'une touche soit pressée par l'utilisateur.
         /// </summary>
@@ -608,6 +608,7 @@ namespace SurvieEnTerreInconnue
             Console.WriteLine(message);
             Console.ReadKey(true);
         }
+
         /// <summary>
         /// Méthode qui affiche le menu principal du jeu
         /// </summary>

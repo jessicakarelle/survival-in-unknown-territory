@@ -248,6 +248,7 @@ namespace SurvieEnTerreInconnue
                     break;
             }
         }
+
         /// <summary>
         /// Probalité de collecte de ressources dans le désert
         /// </summary>
