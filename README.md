@@ -1,28 +1,51 @@
 <p align="center">
-  <img src="images\screenshot.png" width="100%" alt = "Screenshot of the project">
+  <img src="images/screenshot.png" width="100%" alt="Screenshot of the project">
 </p>
 
-# Survie en Terre Inconnue
+# Survival In Unknown Territory
 
-Jeu de survie en C# développé pour le cours **420-1A6-ST – Algorithmique et programmation structurée (A25)**.  
-Le joueur explore un monde inconnu, collecte des ressources, fabrique des matériaux et construit une maison à la base **[0,0]** avant l’arrivée de l’hiver.
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Visual Studio](https://img.shields.io/badge/Visual_Studio_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-## Fonctionnalités
-- Déplacement sur une carte générée dynamiquement
-- Inventaire et fabrication de matériaux
-- Sauvegarde et chargement de la partie
-- Menu principal avec options de jeu et crédits
+A survival game in C# developed for the course **420-1A6-ST – Algorithms and Structured Programming (Fall 2025)**.  
+The player explores an unknown world, collects resources, crafts materials, and builds a house at the base **[0,0]** before winter arrives.
+
+## Features
+- Dynamic map generation and exploration
+- Inventory system and crafting mechanics
+- Save and load game functionality
+- Main menu with game options and credits
 
 ## Technologies
-- C# (console)
-- Modularisation
-- Listes et tableaux multidimensionnels
-- Sauvegarde des données au format JSON
+- C# (Console Application)
+- Modular programming
+- Lists and multidimensional arrays
+- JSON data persistence
 
-## Outils
+## Tools
 - Git
-- Vs Code 2022
+- Visual Studio Code 2022
   
-## Lancer le projet
+## Getting Started
 ```bash
 git clone https://github.com/jktchikapa/survival-in-unknown-territory-console-game-project.git
+cd survival-in-unknown-territory-console-game-project
+```
+
+## How to Play
+
+**Controls:**  
+- Arrow Keys or **N/S/E/O** to move (North/South/East/West)
+- Follow in-game prompts for gathering, crafting, and building
+
+**Goal:**  
+Explore the world, collect resources, and build a house at base [0,0] before winter arrives!
+
+## Credits
+Developed by Jessica Karelle and Romuald Arnaud Voufo Tsafack  
+CEGEP Saint-Jean-sur-Richelieu
+
+## License
+Educational Project
