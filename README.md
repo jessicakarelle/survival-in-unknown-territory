@@ -4,6 +4,8 @@
 
 # Survival In Unknown Territory
 
+**Note:** The game interface is in French.
+
 A survival game in C# developed for the course **420-1A6-ST – Algorithms and Structured Programming (Fall 2025)**.  
 The player explores an unknown world, collects resources, crafts materials, and builds a house at the base **[0,0]** before winter arrives.
 
