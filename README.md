@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/profile.png" width="180">
+</p>
+
 # Survie en Terre Inconnue
 
 Jeu de survie en C# développé pour le cours **420-1A6-ST – Algorithmique et programmation structurée (A25)**.  
@@ -10,8 +14,15 @@ Le joueur explore un monde inconnu, collecte des ressources, fabrique des matér
 - Menu principal avec options de jeu et crédits
 
 ## Technologies
-- C# (console / jeu 2D)
+- C# (console)
+- Modularisation
+- Listes et tableaux multidimensionnels
+- Sauvegarde des données au format JSON
 
+## Outils
+- Git
+- Vs Code 2022
+  
 ## Lancer le projet
 ```bash
 git clone https://github.com/jktchikapa/survival-in-unknown-territory-console-game-project.git
