@@ -32,7 +32,7 @@ namespace SurvieEnTerreInconnue
                                 "\r\n╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                             ");
             Console.WriteLine();
             Console.ResetColor();
-            WaitForKeyPress("\n\nAppuyez sur touche pour commençer le jeu....");
+            WaitForKeyPress("\n\nAppuyez sur touche pour commençer le jeu ... ");
             Thread.Sleep(200);
         }
 
@@ -600,14 +600,16 @@ namespace SurvieEnTerreInconnue
         /// </summary>
         public static void WaitForKeyPress(string message = "\nAppuyez sur une touche pour continuer...")
         {
-            Console.WriteLine(message);
+            Console.Write(message);
             Console.ReadKey(true);
         }
 
         public static void DisplayErrorMessage(string message = "Choix invalide, veuillez réessayer ...")
         {
-            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write(message,2);
             Console.ReadKey(true);
+            Console.ResetColor();
         }
 
         /// <summary>

@@ -62,9 +62,7 @@ namespace SurvieEnTerreInconnue
                         }
                         break;
                     default:
-                        Display.AnimateText("\nChoix invalide. Veuillez réessayer.");
-                        Console.ResetColor();
-                        Thread.Sleep(1000);
+                        Display.DisplayErrorMessage("\nChoix invalide. Veuillez réessayer.");
                         break;
                 }
             }
