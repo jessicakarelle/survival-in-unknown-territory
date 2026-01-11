@@ -29,6 +29,8 @@ The player explores an unknown world, collects resources, crafts materials, and 
 ```bash
 git clone https://github.com/jktchikapa/survival-in-unknown-territory-console-game-project.git
 cd survival-in-unknown-territory-console-game-project
+dir *sln
+start SurvieEnTerreInconnue.sln
 ```
 
 ## How to Play
